@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased scroll-smooth;
+    background-color: #020617;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.glass-card {
+  @apply bg-slate-900/50 backdrop-blur-xl border border-white/[0.08] shadow-2xl;
+}
+
+.premium-glow {
+  background: radial-gradient(circle at center, rgba(129, 140, 248, 0.08) 0%, transparent 70%);
+}

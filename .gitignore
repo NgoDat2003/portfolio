@@ -1,0 +1,8 @@
+node_modules
+dist
+.vsc
+.DS_Store
+*.local
+.env
+.npm
+.eslintcache
