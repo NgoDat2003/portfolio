@@ -126,7 +126,7 @@ src/
     ],
     tech: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
     github: '#',
-    github_fe: 'https://github.com/NgoDat2003/fronend_web',
+    github_fe: 'https://github.com/NgoDat2003/frontend_web',
     github_be: 'https://github.com/NgoDat2003/backend_web',
     demo: 'https://sh-shop-dats-projects-eadf36c1.vercel.app/',
     image: '/assets/image_fullstack/dashboard.png',
