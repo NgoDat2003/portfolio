@@ -35,31 +35,31 @@ export const projects: Project[] = [
     tech: ['React', 'Redux Toolkit', 'Ant Design', 'SignalR', 'Axios', 'Recharts'],
     github: 'https://github.com/NgoDat2003/student_management',
     demo: 'https://student-management-eta-drab.vercel.app',
-    image: '/src/assets/images/student-management.png',
+    image: '/assets/images/student-management.png',
     images: [
-      '/src/assets/images/login.png',
-      '/src/assets/images/admin-dashboard.png',
-      '/src/assets/images/student-dashboard.png',
-      '/src/assets/images/teacher-dashboard.png',
-      '/src/assets/images/grades.png',
-      '/src/assets/images/chat.png'
+      '/assets/images/login.png',
+      '/assets/images/admin-dashboard.png',
+      '/assets/images/student-dashboard.png',
+      '/assets/images/teacher-dashboard.png',
+      '/assets/images/grades.png',
+      '/assets/images/chat.png'
     ],
     full_description: `
 ### Trang đăng nhập
-![Login](/src/assets/images/login.png)
+![Login](/assets/images/login.png)
 
 ### Dashboard Admin
-![Admin Dashboard](/src/assets/images/admin-dashboard.png)
+![Admin Dashboard](/assets/images/admin-dashboard.png)
 
 ### Dashboard Sinh viên
-![Student Dashboard](/src/assets/images/student-dashboard.png)
+![Student Dashboard](/assets/images/student-dashboard.png)
 
 ### Dashboard Giảng viên
-![Teacher Dashboard](/src/assets/images/teacher-dashboard.png)
+![Teacher Dashboard](/assets/images/teacher-dashboard.png)
 
 ### Quản lý điểm & Chat Real-time
-![Grades](/src/assets/images/grades.png)
-![Chat](/src/assets/images/chat.png)
+![Grades](/assets/images/grades.png)
+![Chat](/assets/images/chat.png)
 
 ## ✨ Tính Năng Chính
 ###  Quản trị viên (Admin)
@@ -129,16 +129,16 @@ src/
     github_fe: 'https://github.com/NgoDat2003/fronend_web',
     github_be: 'https://github.com/NgoDat2003/backend_web',
     demo: 'https://sh-shop-dats-projects-eadf36c1.vercel.app/',
-    image: '/src/assets/image_fullstack/dashboard.png',
+    image: '/assets/image_fullstack/dashboard.png',
     images: [
-      '/src/assets/image_fullstack/login.png',
-      '/src/assets/image_fullstack/register.png',
-      '/src/assets/image_fullstack/product.png',
-      '/src/assets/image_fullstack/cart_step1.png',
-      '/src/assets/image_fullstack/cart_step2.png',
-      '/src/assets/image_fullstack/history_order.png',
-      '/src/assets/image_fullstack/dashboard.png',
-      '/src/assets/image_fullstack/admin_management_user.png'
+      '/assets/image_fullstack/login.png',
+      '/assets/image_fullstack/register.png',
+      '/assets/image_fullstack/product.png',
+      '/assets/image_fullstack/cart_step1.png',
+      '/assets/image_fullstack/cart_step2.png',
+      '/assets/image_fullstack/history_order.png',
+      '/assets/image_fullstack/dashboard.png',
+      '/assets/image_fullstack/admin_management_user.png'
     ],
     full_description: `## 🔗 Tài Khoản Demo
 | Vai trò | Email | Mật khẩu |
@@ -169,24 +169,24 @@ Dự án Full-stack xây dựng theo mô hình Monolith tinh gọn, đảm bảo
 ## 📸 Giao Diện Thực Tế
 
 ### Đăng nhập & Đăng ký
-![Login](/src/assets/image_fullstack/login.png)
-![Register](/src/assets/image_fullstack/register.png)
+![Login](/assets/image_fullstack/login.png)
+![Register](/assets/image_fullstack/register.png)
 
 ### Trang Sản Phẩm & Danh Mục
-![Product](/src/assets/image_fullstack/product.png)
+![Product](/assets/image_fullstack/product.png)
 
 ### Quy Trình Giỏ Hàng (Cart & Checkout)
-![Cart Step 1](/src/assets/image_fullstack/cart_step1.png)
-![Cart Step 2](/src/assets/image_fullstack/cart_step2.png)
+![Cart Step 1](/assets/image_fullstack/cart_step1.png)
+![Cart Step 2](/assets/image_fullstack/cart_step2.png)
 
 ### Lịch Sử Đơn Hàng
-![History](/src/assets/image_fullstack/history_order.png)
+![History](/assets/image_fullstack/history_order.png)
 
 ### Dashboard (Thống Kê)
-![Admin Dashboard](/src/assets/image_fullstack/dashboard.png)
+![Admin Dashboard](/assets/image_fullstack/dashboard.png)
 
 ### Admin Quản Lý Sinh Viên & Người Dùng
-![Admin User](/src/assets/image_fullstack/admin_management_user.png)
+![Admin User](/assets/image_fullstack/admin_management_user.png)
 `
   }
 ];
