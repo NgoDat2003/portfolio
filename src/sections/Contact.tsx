@@ -1,6 +1,28 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 export default function Contact() {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const email = "ngodat200319@gmail.com";
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(email).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 3000);
+      
+      // Mở ứng dụng Mail mặc định
+      setTimeout(() => {
+        window.location.href = `mailto:${email}?subject=Liên hệ hợp tác từ Portfolio`;
+      }, 500);
+    }).catch(() => {
+      // Fallback nếu trình duyệt chặn clipboard
+      window.location.href = `mailto:${email}?subject=Liên hệ hợp tác từ Portfolio`;
+    });
+  };
+
   return (
     <section id="contact" className="py-32 px-8 md:px-24 bg-background text-center flex flex-col items-center relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
@@ -32,10 +54,19 @@ export default function Contact() {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="flex flex-wrap justify-center gap-8"
       >
-        <a href="mailto:ngodat200319@gmail.com" className="px-12 py-5 bg-primary text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:scale-105 transition-all shadow-[0_15px_30px_rgba(129,140,248,0.3)]">
-          Gửi Email
+        <a 
+          href="mailto:ngodat200319@gmail.com" 
+          onClick={handleEmailClick}
+          className="px-8 py-5 bg-primary text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:scale-105 transition-all duration-300 shadow-[0_15px_30px_rgba(129,140,248,0.3)] flex justify-center items-center min-w-[220px]"
+        >
+          {isCopied ? "Đã copy Email ✔" : "Gửi Email"}
         </a>
-        <a href="https://github.com/NgoDat2003" target="_blank" rel="noreferrer" className="px-12 py-5 glass-card text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-white/10 transition-all">
+        <a 
+          href="https://github.com/NgoDat2003" 
+          target="_blank" 
+          rel="noreferrer" 
+          className="px-8 py-5 glass-card text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-white/10 transition-all border border-white/5 flex justify-center items-center min-w-[220px]"
+        >
           GitHub Profile
         </a>
       </motion.div>
@@ -46,3 +77,4 @@ export default function Contact() {
     </section>
   )
 }
+

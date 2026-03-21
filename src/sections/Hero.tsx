@@ -53,7 +53,7 @@ export default function Hero() {
       </div>
 
       <div className="flex-none hidden lg:block scale-110">
-        <GlowingAvatar imageSrc="https://via.placeholder.com/400" />
+        <GlowingAvatar imageSrc="/src/assets/cv.png" />
       </div>
     </section>
   )

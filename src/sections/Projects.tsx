@@ -1,53 +1,16 @@
 import SectionTitle from '../components/shared/SectionTitle'
 import { motion } from 'framer-motion'
+import { projects } from '../data/projects'
+import { Link } from 'react-router-dom'
 
 export default function Projects() {
-  const projects = [
-    {
-      title: 'Hệ thống Quản lý Đào tạo (LMS)',
-      category: 'Enterprise / Education',
-      timeline: 'Tháng 09/2025 — Tháng 12/2025',
-      desc: 'Giải pháp ERP giúp số hóa quy trình quản trị đào tạo học thuật, hỗ trợ xử lý luồng dữ liệu lớn và báo cáo chuyên sâu.',
-      tech_detail: 'Frontend phát triển bằng React 18 & Ant Design. Backend sử dụng .NET (C#) tích hợp SignalR cho truyền tải dữ liệu thời gian thực và SQL Server.',
-      deploy_note: 'Phần Backend không do mình trực tiếp phát triển hoàn toàn nên hiện tại khó để triển khai bản Live Demo đầy đủ.',
-      achievements: [
-        'Hệ thống Dashboard phân tích dữ liệu tập trung với biểu đồ Recharts.',
-        'Xử lý nghiệp vụ phức tạp: Quản lý học phần, điểm số và xếp loại tự động.',
-        'Kết xuất báo cáo chuyên nghiệp sang định dạng Excel/PDF.',
-        'Tối ưu hóa State Management bằng Redux Toolkit cho hệ thống quy mô lớn.'
-      ],
-      tech: ['React', 'SignalR', '.NET Core', 'SQL Server'],
-      github: 'https://github.com/NgoDat2003/student_management',
-      demo: '#',
-      image: 'https://via.placeholder.com/800x500/1e293b/6366f1?text=LMS+Architecture'
-    },
-    {
-      title: 'Hệ sinh thái E-Commerce Full-stack',
-      category: 'Full-stack / Enterprise',
-      timeline: 'Tháng 05/2024 — Tháng 08/2024',
-      desc: 'Nền tảng thương mại điện tử đồng bộ từ Giao diện khách hàng đến Hệ thống quản trị kho bãi và giao dịch Backend.',
-      tech_detail: 'Tự phát triển 100% cả Frontend (React/Vite) và Backend (Node.js/Express). Tương tác cơ sở dữ liệu qua Sequelize (PostgreSQL) và đóng gói Docker.',
-      deploy_note: 'Dự án đã được triển khai thành công bản Live Demo (Full-stack) trên Vercel, hỗ trợ đầy đủ các tính năng nghiệp vụ.',
-      achievements: [
-        'Tự thiết kế và triển khai xuyên suốt luồng dữ liệu từ Backend đến UI.',
-        'Hệ thống xác thực đa lớp (JWT, Bcrypt) và phân quyền người dùng chặt chẽ.',
-        'Tối ưu hóa Database Indexing giúp tăng tốc độ truy vấn sản phẩm đáng kể.',
-        'Quy trình vận hành Docker chuyên nghiệp, hỗ trợ triển khai nhanh chóng.'
-      ],
-      tech: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
-      github: 'https://github.com/NgoDat2003/backend_web',
-      demo: 'https://sh-shop-dats-projects-eadf36c1.vercel.app/',
-      image: 'https://via.placeholder.com/800x500/1e293b/6366f1?text=Full-stack+E-Commerce'
-    }
-  ]
-
   return (
     <section id="projects" className="py-24 px-8 md:px-24 bg-background">
       <SectionTitle title="Dự án" subtitle="Sản phẩm tiêu biểu" />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mt-16">
         {projects.map((project, index) => (
           <motion.div
-            key={index}
+            key={project.id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -84,52 +47,66 @@ export default function Projects() {
                 </p>
               </div>
 
-              <div className="p-8 bg-slate-950/40 rounded-3xl border border-white/[0.05] space-y-6 shadow-inner">
+              <div className="p-8 bg-slate-950/40 rounded-3xl border border-white/[0.05] shadow-inner">
                 <div className="space-y-2">
                   <span className="text-[12px] uppercase font-black text-primary/80 tracking-[0.2em] block">Công nghệ & Giải pháp:</span>
                   <p className="text-base text-slate-300 leading-relaxed font-normal">
                     {project.tech_detail}
                   </p>
                 </div>
-                <div className="flex items-start gap-4 pt-4 border-t border-white/5 mt-4">
-                  <span className={`text-[12px] uppercase font-black tracking-[0.2em] block mt-1 whitespace-nowrap ${project.demo === '#' ? 'text-orange-400' : 'text-emerald-400'}`}>
-                    Trạng thái:
-                  </span>
-                  <p className="text-sm text-slate-400 leading-relaxed font-medium italic">
-                    {project.deploy_note}
-                  </p>
-                </div>
               </div>
 
-              <div className="space-y-5">
-                <span className="text-[12px] uppercase font-black text-white/30 tracking-[0.3em] block">Thành tựu chuyên nghiệp:</span>
-                <ul className="space-y-4">
-                  {project.achievements.map((ach, i) => (
-                    <li key={i} className="text-[16px] text-slate-300 flex items-start leading-relaxed font-medium">
-                      <span className="text-primary mr-5 text-2xl leading-none pt-0.5">▹</span>
-                      <span>{ach}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pt-12 flex gap-12 items-center border-t border-white/10">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[12px] font-black uppercase tracking-[0.4em] text-white/40 hover:text-white transition-colors flex items-center gap-2 group/link"
+              <div className="pt-12 flex flex-wrap gap-4 md:gap-6 items-center border-t border-white/10">
+                <Link
+                  to={`/project/${project.id}`}
+                  className="px-8 py-3.5 bg-white/5 border border-white/10 hover:border-primary hover:bg-primary/10 text-white font-bold uppercase tracking-widest text-[11px] rounded-full hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group/btn cursor-pointer"
                 >
-                  Source Code <span className="text-primary group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">↗</span>
-                </a>
+                  <span>Mô tả chi tiết</span>
+                  <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+                {project.github_fe || project.github_be ? (
+                  <>
+                    {project.github_fe && (
+                      <a
+                        href={project.github_fe}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-slate-300 hover:text-white border border-transparent hover:border-white/10 rounded-full transition-all flex items-center gap-2 group/link cursor-pointer"
+                      >
+                        Github FE <span className="text-primary group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">↗</span>
+                      </a>
+                    )}
+                    {project.github_be && (
+                      <a
+                        href={project.github_be}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-slate-300 hover:text-white border border-transparent hover:border-white/10 rounded-full transition-all flex items-center gap-2 group/link cursor-pointer"
+                      >
+                        Github BE <span className="text-primary group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">↗</span>
+                      </a>
+                    )}
+                  </>
+                ) : project.github !== '#' && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-slate-300 hover:text-white border border-transparent hover:border-white/10 rounded-full transition-all flex items-center gap-2 group/link cursor-pointer"
+                  >
+                    Github <span className="text-primary group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">↗</span>
+                  </a>
+                )}
                 {project.demo !== '#' && (
                   <a
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[12px] font-black uppercase tracking-[0.4em] text-white/40 hover:text-white transition-colors flex items-center gap-2 group/link"
+                    className="px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-slate-300 hover:text-white border border-transparent hover:border-white/10 rounded-full transition-all flex items-center gap-2 group/link cursor-pointer"
                   >
-                    Live Demo <span className="text-primary group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">↗</span>
+                    Demo <span className="text-primary group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">↗</span>
                   </a>
                 )}
               </div>
