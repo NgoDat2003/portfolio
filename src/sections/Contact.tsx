@@ -8,56 +8,52 @@ export default function Contact() {
     e.preventDefault();
     const email = "ngodat200319@gmail.com";
     
-    // Copy to clipboard
     navigator.clipboard.writeText(email).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 3000);
-      
-      // Mở ứng dụng Mail mặc định
       setTimeout(() => {
         window.location.href = `mailto:${email}?subject=Liên hệ hợp tác từ Portfolio`;
       }, 500);
     }).catch(() => {
-      // Fallback nếu trình duyệt chặn clipboard
       window.location.href = `mailto:${email}?subject=Liên hệ hợp tác từ Portfolio`;
     });
   };
 
   return (
-    <section id="contact" className="py-32 px-8 md:px-24 bg-background text-center flex flex-col items-center relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+    <section id="contact" className="py-32 flex flex-col items-center relative overflow-hidden border-t border-white/5 bg-zinc-950/50">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <motion.h2
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-6xl md:text-9xl font-display font-extrabold text-white mb-10 leading-none tracking-tighter"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="text-5xl md:text-8xl lg:text-9xl font-display font-bold text-zinc-100 mb-8 leading-none tracking-tighter"
       >
-        Hãy cùng <span className="text-primary">Hợp tác</span>.
+        Hãy cùng <br className="md:hidden" /><span className="text-gradient">Hợp tác</span>.
       </motion.h2>
 
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-slate-300 text-xl md:text-2xl max-w-2xl mb-16 font-medium leading-relaxed"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        className="text-zinc-400 text-lg md:text-xl max-w-2xl mb-16 font-normal leading-relaxed text-center px-8"
       >
-        Hiện tại mình đang mở tìm kiếm cơ hội làm việc Full-time cho vị trí Frontend Developer. Đừng ngại liên hệ qua Email hoặc LinkedIn nhé!
+        Tôi đang tìm kiếm cơ hội làm việc Full-time cho vị trí <span className="text-zinc-200">Frontend Engineer</span>. Đừng ngại liên hệ nến bạn thấy phù hợp!
       </motion.p>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="flex flex-wrap justify-center gap-8"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-wrap justify-center gap-6"
       >
         <a 
           href="mailto:ngodat200319@gmail.com" 
           onClick={handleEmailClick}
-          className="px-8 py-5 bg-primary text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:scale-105 transition-all duration-300 shadow-[0_15px_30px_rgba(129,140,248,0.3)] flex justify-center items-center min-w-[220px]"
+          className="px-8 py-4 bg-white text-zinc-950 font-bold text-sm tracking-wide rounded-full hover:scale-[1.02] transition-transform min-w-[200px] flex justify-center items-center gap-2 group"
         >
           {isCopied ? "Đã copy Email ✔" : "Gửi Email"}
         </a>
@@ -65,16 +61,15 @@ export default function Contact() {
           href="https://github.com/NgoDat2003" 
           target="_blank" 
           rel="noreferrer" 
-          className="px-8 py-5 glass-card text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-white/10 transition-all border border-white/5 flex justify-center items-center min-w-[220px]"
+          className="px-8 py-4 bg-surface text-white font-medium text-sm tracking-wide rounded-full border border-border hover:border-white/20 transition-colors min-w-[200px] flex justify-center items-center"
         >
           GitHub Profile
         </a>
       </motion.div>
 
-      <div className="mt-40 text-slate-500 text-[10px] font-black uppercase tracking-[0.4em] opacity-50">
+      <div className="mt-40 text-zinc-600 text-[10px] font-bold uppercase tracking-widest text-center">
         © 2026 Ngô Quốc Đạt (0377574337). Thiết kế tối giản & Hiệu năng cao.
       </div>
     </section>
   )
 }
-

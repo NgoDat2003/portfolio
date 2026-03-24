@@ -7,16 +7,59 @@
 @layer base {
   body {
     @apply antialiased scroll-smooth;
-    background-color: #020617;
-    color: #e2e8f0;
+    background-color: #09090b; /* Zinc 950 - deeper dark */
+    color: #e4e4e7; /* Zinc 200 */
     font-family: 'Inter', sans-serif;
+  }
+  
+  /* Select text style */
+  ::selection {
+    background-color: rgba(129, 140, 248, 0.3);
+    color: white;
   }
 }
 
-.glass-card {
-  @apply bg-slate-900/50 backdrop-blur-xl border border-white/[0.08] shadow-2xl;
+@layer utilities {
+  .premium-card {
+    @apply backdrop-blur-md border border-white/[0.04] hover:border-white/[0.12] transition-all duration-500 rounded-[2rem] shadow-2xl;
+    background-color: rgba(24, 24, 27, 0.4); /* surface/40 */
+  }
+  
+  .premium-card:hover {
+    background-color: rgba(24, 24, 27, 0.6); /* surface/60 */
+  }
+  
+  /* Text gradient for headings */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/50;
+  }
+  
+  /* Subtle mesh background */
+  .bg-grid-white {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath stroke='rgba(255,255,255,0.03)' stroke-width='1' d='M0 0h40v40H0z' fill='none'/%3E%3C/svg%3E");
+  }
 }
 
-.premium-glow {
-  background: radial-gradient(circle at center, rgba(129, 140, 248, 0.08) 0%, transparent 70%);
+/* Spotlight Hover Effect for Cards */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
 }

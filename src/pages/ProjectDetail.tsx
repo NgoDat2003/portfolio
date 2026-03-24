@@ -121,7 +121,7 @@ export default function ProjectDetail() {
                     {title.replace(/[✨💬🛠🏗📁🔐👤📸🔗]/g, '').trim()}
                     <div className="h-[1px] flex-1 bg-white/5"></div>
                   </h2>
-                  <div className="space-y-8 max-w-4xl">
+                  <div className="space-y-8 w-full">
                     {contentLines.map((line, lIdx) => {
                       const trimmedLine = line.trim();
                       if (!trimmedLine) return null;
@@ -148,12 +148,12 @@ export default function ProjectDetail() {
                         const cells = trimmedLine.split('|').filter(c => c.trim() !== '' || trimmedLine.includes('| '));
                         if (cells.length < 1 || trimmedLine.match(/[|-]{3,}/)) return null;
                         return (
-                          <div key={lIdx} className="overflow-x-auto my-10">
-                            <table className="w-full border-separate border-spacing-0 rounded-3xl overflow-hidden glass-card border border-white/5">
+                          <div key={lIdx} className="overflow-x-auto my-4 w-full">
+                            <table className="w-full table-fixed border-collapse rounded-2xl overflow-hidden bg-surface border border-white/10 text-left">
                               <tbody>
-                                <tr className="hover:bg-white/[0.02] transition-colors">
+                                <tr className="hover:bg-white/[0.04] transition-colors border-b border-white/5 last:border-0 even:bg-white/[0.02]">
                                   {cells.map((cell, cIdx) => (
-                                    <td key={cIdx} className="px-10 py-6 border-r last:border-0 border-white/5 text-slate-300 font-medium">
+                                    <td key={cIdx} className="px-6 py-4 border-r last:border-0 border-white/5 text-zinc-300 font-medium text-sm">
                                       {cell.trim()}
                                     </td>
                                   ))}
@@ -165,12 +165,12 @@ export default function ProjectDetail() {
                       }
 
                       // Architecture / Trees
-                      if (trimmedLine.startsWith('```') || trimmedLine.includes('┌─') || trimmedLine.includes('│')) {
-                        if (trimmedLine === '```text' || trimmedLine === '```') return null;
+                      if (trimmedLine.startsWith('```') || trimmedLine.includes('├─') || trimmedLine.includes('└─') || trimmedLine.includes('│')) {
+                        if (trimmedLine.startsWith('```')) return null;
                         return (
-                          <pre key={lIdx} className="p-10 bg-slate-950 rounded-[2rem] border border-white/5 text-primary/80 font-mono text-[14px] leading-relaxed overflow-x-auto my-12 shadow-inner">
-                            <code>{trimmedLine}</code>
-                          </pre>
+                          <div key={lIdx} className="px-8 bg-[#18181b] border-x border-white/10 text-zinc-300 font-mono text-[13px] leading-[1.6] py-0.5 first:pt-6 last:pb-6 first:rounded-t-2xl last:rounded-b-2xl first:border-t flex flex-col">
+                            <code className="whitespace-pre">{line.replace('---', '   ')}</code>
+                          </div>
                         );
                       }
 
