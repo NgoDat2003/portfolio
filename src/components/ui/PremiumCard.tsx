@@ -16,6 +16,7 @@ export interface Project {
   github_fe?: string;
   github_be?: string;
   demo: string;
+  video?: string;
   image: string;
   images?: string[];
   full_description: string;

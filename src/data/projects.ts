@@ -1,4 +1,4 @@
-export interface Project {
+﻿export interface Project {
   id: string;
   title: string;
   category: string;
@@ -12,6 +12,7 @@ export interface Project {
   github_fe?: string;
   github_be?: string;
   demo: string;
+  video?: string;
   image: string;
   images?: string[];
   full_description: string;
@@ -19,20 +20,101 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'lms',
-    title: 'Hệ Thống Quản Lý Hồ Sơ Sinh Viên Trực Tuyến',
-    category: 'Enterprise / Education',
-    timeline: 'Tháng 09/2025 — Tháng 12/2025',
-    desc: 'Đồ án tốt nghiệp — Ứng dụng web quản lý toàn diện cho sinh viên, giảng viên và quản trị viên, tích hợp chat real-time và xuất báo cáo Excel/PDF.',
-    tech_detail: 'Frontend phát triển bằng React 18, Vite, Redux Toolkit và Ant Design. Backend sử dụng ASP.NET Core (C#) tích hợp SignalR cho truyền tải dữ liệu thời gian thực.',
-    deploy_note: 'Dự án tốt nghiệp đạt điểm cao. Phần Backend do thành viên khác thực hiện, hiện đang ở trạng thái offline.',
+    id: 'qaqc-platform',
+    title: 'QualityOps QA/QC Platform',
+    category: 'Frontend / Full-stack Dashboard',
+    timeline: '05/2026 - Present',
+    desc: 'Hệ thống QA/QC audit workflow cho chuỗi cửa hàng: lập kế hoạch audit, QC chấm lỗi, upload evidence, tính điểm, tạo Action Plan và dashboard theo vai trò.',
+    tech_detail: 'Frontend dùng Next.js, React, TypeScript, TanStack Query và Tailwind CSS. Backend dùng Next.js API Routes, Prisma ORM, PostgreSQL, JWT/RBAC và Playwright E2E cho các flow chính.',
+    deploy_note: 'Có live demo frontend, source FE/BE và Playwright evidence cho full QA/QC lifecycle.',
     achievements: [
-      'Xây dựng hệ thống quản lý 40+ trang nghiệp vụ phức tạp.',
-      'Tích hợp SignalR Chat Real-time với trạng thái typing và đếm tin nhắn.',
-      'Hệ thống phân quyền 3 lớp (Admin, Teacher, Student) bảo mật cao.',
-      'Xuất báo cáo chuyên nghiệp qua ExcelJS và jsPDF.'
+      'Xây dựng module theo vai trò QAM, QC, SM, AM và Admin.',
+      'Triển khai audit plan, checklist, QC submission, evidence upload, scoring logic và Action Plan lifecycle.',
+      'Tạo role-based dashboard, data table, filter, empty/loading state và responsive layout.',
+      'Kiểm thử các luồng chính bằng Vitest và Playwright E2E.',
     ],
-    tech: ['React', 'Redux Toolkit', 'Ant Design', 'SignalR', 'Axios', 'Recharts'],
+    tech: ['Next.js', 'React', 'TypeScript', 'TanStack Query', 'Prisma', 'Playwright'],
+    github: '#',
+    github_fe: 'https://github.com/NgoDat2003/qaqc_fe',
+    github_be: 'https://github.com/NgoDat2003/qaqc_be',
+    demo: 'https://qaqc-fe.vercel.app/',
+    video: '/assets/qaqc/qaqc-full-lifecycle-e2e.webm',
+    image: '/assets/qaqc/qaqc-playwright-report.png',
+    images: ['/assets/qaqc/qaqc-playwright-report.png'],
+    full_description: `
+## Tổng quan
+QualityOps là hệ thống quản lý audit QA/QC cho chuỗi cửa hàng, tập trung vào workflow nhiều vai trò: QAM lập kế hoạch, QC thực hiện audit, SM cập nhật khắc phục, AM theo dõi khu vực và Admin quản trị dữ liệu.
+
+## Vai trò của tôi
+- Phân tích nghiệp vụ QA/QC từ checklist, scoring rule, audit execution, evidence upload và Action Plan.
+- Triển khai các màn hình dashboard, bảng dữ liệu, form và luồng tích hợp API.
+- Xây dựng một phần API route, validation logic và kiểm thử tự động cho luồng nghiệp vụ chính.
+
+## Tính năng chính
+- Role-based dashboard cho Admin, QAM, QC, SM và AM.
+- Audit planning, assignment, checklist configuration và QC audit submission.
+- Evidence upload, scoring engine, CCP/RISK rule và Action Plan lifecycle.
+- Playwright E2E demo cho flow QAM -> QC -> SM -> QAM.
+- Video demo E2E dài khoảng 2 phút được sinh tự động từ Playwright, không phải quay tay.
+
+## Công nghệ
+- Frontend: Next.js, React, TypeScript, TanStack Query, Tailwind CSS.
+- Backend: Next.js API Routes, Prisma ORM, PostgreSQL, JWT/RBAC.
+- Testing: Vitest, Playwright E2E.
+
+## Hình ảnh kiểm thử
+![QAQC Playwright Report](/assets/qaqc/qaqc-playwright-report.png)
+`,
+  },
+  {
+    id: 'inno-pos',
+    title: 'Inno POS Enterprise Modules',
+    category: 'Frontend / POS Workflow',
+    timeline: '06/2025 - 03/2026',
+    desc: 'Các module frontend cho hệ thống POS đa kênh: sales order, inventory, shipping và repair order, tập trung vào form nghiệp vụ và xử lý dữ liệu qua API.',
+    tech_detail: 'React.js, TypeScript, TanStack Query, React Hook Form, Zod và Playwright cho regression flow.',
+    deploy_note: 'Dự án doanh nghiệp nội bộ, không public source/demo. Portfolio chỉ mô tả phạm vi công việc và kỹ thuật đã sử dụng.',
+    achievements: [
+      'Phát triển form nghiệp vụ có validation thống nhất bằng React Hook Form và Zod.',
+      'Tích hợp API cho sales, inventory, shipping và repair tracking workflows.',
+      'Tối ưu server state với TanStack Query để giảm request lặp.',
+      'Viết Playwright test cho các flow quan trọng.',
+    ],
+    tech: ['React', 'TypeScript', 'TanStack Query', 'Zod', 'Playwright'],
+    github: '#',
+    demo: '#',
+    image: '/assets/image_fullstack/dashboard.png',
+    images: ['/assets/image_fullstack/dashboard.png', '/assets/image_fullstack/product.png'],
+    full_description: `
+## Tổng quan
+Inno POS Enterprise là hệ thống POS đa kênh phục vụ nghiệp vụ bán hàng, quản lý tồn kho, giao hàng và sửa chữa.
+
+## Vai trò của tôi
+- Tham gia phát triển các module frontend trong hệ thống POS.
+- Xây dựng form nghiệp vụ, data table, API integration và regression test cho flow quan trọng.
+- Phối hợp xử lý lỗi UI/API trong quá trình phát triển và kiểm thử.
+
+## Công nghệ
+- React.js, TypeScript, TanStack Query.
+- React Hook Form, Zod.
+- Playwright.
+`,
+  },
+  {
+    id: 'student-management',
+    title: 'Student Management System',
+    category: 'Graduation Project / Frontend',
+    timeline: '09/2025 - 12/2025',
+    desc: 'Đồ án tốt nghiệp quản lý sinh viên, giảng viên và quản trị viên, có dashboard, phân quyền, quản lý điểm và chat real-time.',
+    tech_detail: 'Frontend dùng React 18, Vite, Redux Toolkit và Ant Design. Backend ASP.NET Core/SignalR do thành viên khác phụ trách.',
+    deploy_note: 'Có live demo frontend. Một số API/backend có thể không còn online ổn định vì đây là đồ án tốt nghiệp.',
+    achievements: [
+      'Xây dựng nhiều màn hình nghiệp vụ cho Admin, Teacher và Student.',
+      'Tích hợp API, quản lý state bằng Redux Toolkit và xử lý UI theo role.',
+      'Tích hợp chat real-time với SignalR ở frontend.',
+      'Hỗ trợ xuất báo cáo Excel/PDF ở một số màn hình nghiệp vụ.',
+    ],
+    tech: ['React', 'Redux Toolkit', 'Ant Design', 'SignalR', 'Axios'],
     github: 'https://github.com/NgoDat2003/student_management',
     demo: 'https://student-management-eta-drab.vercel.app',
     image: '/assets/images/student-management.png',
@@ -42,151 +124,30 @@ export const projects: Project[] = [
       '/assets/images/student-dashboard.png',
       '/assets/images/teacher-dashboard.png',
       '/assets/images/grades.png',
-      '/assets/images/chat.png'
+      '/assets/images/chat.png',
     ],
     full_description: `
-### Trang đăng nhập
-![Login](/assets/images/login.png)
+## Tổng quan
+Student Management System là đồ án tốt nghiệp mô phỏng hệ thống quản lý sinh viên, giảng viên và quản trị viên.
 
-### Dashboard Admin
-![Admin Dashboard](/assets/images/admin-dashboard.png)
+## Vai trò của tôi
+- Phụ trách chính phần frontend React.
+- Xây dựng UI theo role, dashboard, form quản lý và tích hợp API.
+- Tích hợp các màn hình chat, điểm, sinh viên, giảng viên và báo cáo.
 
-### Dashboard Sinh viên
-![Student Dashboard](/assets/images/student-dashboard.png)
-
-### Dashboard Giảng viên
-![Teacher Dashboard](/assets/images/teacher-dashboard.png)
-
-### Quản lý điểm & Chat Real-time
-![Grades](/assets/images/grades.png)
-![Chat](/assets/images/chat.png)
-
-## ✨ Tính Năng Chính
-###  Quản trị viên (Admin)
-- Dashboard thống kê tổng quan (biểu đồ Bar, Pie, Line).
-- Quản lý người dùng, sinh viên, giảng viên (CRUD đầy đủ).
-- Quản lý môn học, lớp học, chương trình đào tạo.
-- Quản lý điểm, học phí và xuất báo cáo Excel chuyên nghiệp.
-
-###  Sinh viên
-- Xem và chỉnh sửa thông tin cá nhân, ngân hàng, BHYT.
-- Đăng ký môn học theo đợt, xem thời khóa biểu.
-- Xem điểm, công nợ học phí và thông tin tốt nghiệp.
-- Chat real-time trực tiếp với giảng viên chủ nhiệm.
-
-###  Giảng viên
-- Dashboard quản lý các lớp học phần đang dạy.
-- Nhập điểm (hỗ trợ import từ file Excel), quản lý điểm danh.
-- Quản lý bài tập, tài liệu học tập và chat với sinh viên.
-
-## 🔗 Tài Khoản Demo
+## Tài khoản demo
 | Role | Email | Mật khẩu |
-|:---|:---|:---|
 | Admin | admin | admin |
 | Sinh viên | 20052005 | 123456 |
 | Giảng viên | 12061985 | 123456 |
 
-\`\`\`
-
-## 📁 Cấu Trúc Dự Án
-\`\`\`text
-src/
-├── component/    # 122 components tái sử dụng
-│   ├── Admin/    # Components quản trị
-│   ├── Teacher/  # Components giảng viên
-│   ├── Student/  # Components sinh viên
-│   └── Chat/     # Chat widget real-time
-├── page/         # 40 trang nghiệp vụ phân quyền
-├── redux/        # State management (User, Theme)
-├── service/      # 34+ API service files tương tác BE
-└── until/        # Utilities (Export Excel/PDF)
-\`\`\`
-
-## 🔐 Phân Quyền
-| Role    | ID | Quyền truy cập    |
-|:---     |:---|:---               |
-| Admin   | 1  | Toàn bộ hệ thống  |
-| Teacher | 2  | Portal giảng viên |
-| Student | 3  | Portal sinh viên  |
-`
+## Hình ảnh
+![Login](/assets/images/login.png)
+![Admin Dashboard](/assets/images/admin-dashboard.png)
+![Student Dashboard](/assets/images/student-dashboard.png)
+![Teacher Dashboard](/assets/images/teacher-dashboard.png)
+![Grades](/assets/images/grades.png)
+![Chat](/assets/images/chat.png)
+`,
   },
-  {
-    id: 'ecommerce',
-    title: 'Hệ sinh thái E-Commerce Full-stack',
-    category: 'Full-stack',
-    timeline: 'Tháng 05/2024 — Tháng 08/2024',
-    desc: 'Nền tảng thương mại điện tử đồng bộ từ Giao diện khách hàng đến Hệ thống quản trị kho bãi và giao dịch Backend.',
-    tech_detail: 'Tự phát triển 100% cả Frontend (React/Vite) và Backend (Node.js/Express). Tương tác cơ sở dữ liệu qua Sequelize (PostgreSQL) và đóng gói Docker.',
-    deploy_note: 'Dự án đã được triển khai thành công bản Live Demo (Full-stack) trên Vercel.',
-    achievements: [
-      'Tự thiết kế Database Schema tối ưu cho 10,000+ sản phẩm.',
-      'Tích hợp Authentication JWT & Role-based Access Control (RBAC).',
-      'Đóng gói thành công Docker Container giúp Deploy dễ dàng.',
-      'UI/UX hiện đại với Tailwind CSS và Framer Motion.'
-    ],
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
-    github: '#',
-    github_fe: 'https://github.com/NgoDat2003/frontend_web',
-    github_be: 'https://github.com/NgoDat2003/backend_web',
-    demo: 'https://sh-shop-dats-projects-eadf36c1.vercel.app/',
-    image: '/assets/image_fullstack/dashboard.png',
-    images: [
-      '/assets/image_fullstack/login.png',
-      '/assets/image_fullstack/register.png',
-      '/assets/image_fullstack/product.png',
-      '/assets/image_fullstack/cart_step1.png',
-      '/assets/image_fullstack/cart_step2.png',
-      '/assets/image_fullstack/history_order.png',
-      '/assets/image_fullstack/dashboard.png',
-      '/assets/image_fullstack/admin_management_user.png'
-    ],
-    full_description: `## 🔗 Tài Khoản Demo
-| Vai trò | Email | Mật khẩu |
-|:---|:---|:---|
-| **Admin** | \`admin@gmail.com\` | \`123456\` |
-| **Người dùng** | Khách tự Đăng ký | *(Tự chọn)* |
-
-## ✨ Tính Năng Chính
-### 🛒 Trải nghiệm mua sắm (Khách hàng)
-- Tìm kiếm, lọc và phân loại sản phẩm nhanh chóng.
-- Hệ thống Giỏ hàng thông minh (Cart), lưu trạng thái mua sắm.
-- Quy trình thanh toán đa bước chuẩn Thương mại điện tử.
-- Theo dõi lịch sử đơn hàng và quy trình vận chuyển.
-
-### 🛡️ Quản trị hệ thống (Admin CMS)
-- Trang Dashboard chuyên nghiệp thống kê doanh thu bán hàng.
-- Quản lý danh mục sản phẩm và kho hàng (Inventory).
-- Quản lý tài khoản khách hàng, phân quyền hệ thống (RBAC).
-
-## 🛠 Kiến Trúc & Công Nghệ
-Dự án Full-stack xây dựng theo mô hình Monolith tinh gọn, đảm bảo tốc độ phản hồi tính năng nhanh và dễ đóng gói.
-- **Frontend:** Xây dựng bằng ReactJS, giao diện Tailwind CSS (Mobile First).
-- **Backend:** Node.js (Express), tối ưu hóa luồng xử lý truy vấn API.
-- **Database:** PostgreSQL quản lý hiệu quả qua Sequelize ORM (có chuẩn bị Migration và Seeder).
-- **Bảo mật:** Authentication bằng JWT bảo mật đa tầng, băm Password Hashing an toàn.
-- **DevOps:** Đóng gói toàn bộ ứng dụng bằng Docker Container, triển khai Vercel CI/CD tức thời.
-
-## 📸 Giao Diện Thực Tế
-
-### Đăng nhập & Đăng ký
-![Login](/assets/image_fullstack/login.png)
-![Register](/assets/image_fullstack/register.png)
-
-### Trang Sản Phẩm & Danh Mục
-![Product](/assets/image_fullstack/product.png)
-
-### Quy Trình Giỏ Hàng (Cart & Checkout)
-![Cart Step 1](/assets/image_fullstack/cart_step1.png)
-![Cart Step 2](/assets/image_fullstack/cart_step2.png)
-
-### Lịch Sử Đơn Hàng
-![History](/assets/image_fullstack/history_order.png)
-
-### Dashboard (Thống Kê)
-![Admin Dashboard](/assets/image_fullstack/dashboard.png)
-
-### Admin Quản Lý Sinh Viên & Người Dùng
-![Admin User](/assets/image_fullstack/admin_management_user.png)
-`
-  }
 ];
