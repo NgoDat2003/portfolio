@@ -127,7 +127,7 @@ export default function ProjectDetail() {
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="mb-16 aspect-video overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900 shadow-2xl"
+          className="mb-6 aspect-video overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900 shadow-2xl"
         >
           {project.video ? (
             <video
@@ -143,6 +143,15 @@ export default function ProjectDetail() {
             <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
           )}
         </motion.div>
+
+        {project.video && (
+          <div className="mb-16 rounded-2xl border border-primary/20 bg-primary/5 p-5 text-sm leading-relaxed text-zinc-300">
+            <p className="mb-2 text-xs font-black uppercase tracking-[0.25em] text-primary">Automated E2E happy-flow</p>
+            <p>
+              Video này được sinh từ Playwright E2E test, không phải quay tay. Flow mô phỏng người dùng thật đi qua các vai trò QAM, QC và SM: tạo audit plan, QC thực hiện checklist và upload evidence, SM xử lý Action Plan, sau đó QAM kiểm tra và đóng AP.
+            </p>
+          </div>
+        )}
 
         <section className="rounded-[2rem] border border-white/10 bg-surface/40 p-8 md:p-10">
           <div className="mb-10 flex flex-wrap gap-3">
