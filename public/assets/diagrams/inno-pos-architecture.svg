@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0d14"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="540" rx="16" fill="url(#bg)"/>
+  <rect x="1" y="1" width="958" height="538" rx="15" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <text x="480" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#f8fafc" text-anchor="middle" letter-spacing="1">
+    INNO-POS ENTERPRISE RETAIL ARCHITECTURE
+  </text>
+  <text x="480" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#94a3b8" text-anchor="middle">
+    Multi-Channel Retail Tech • Cashier Tab Slices • High-Volume Virtualized Catalog • Automated E2E
+  </text>
+
+  <!-- 1. Frontend Cashier Layer -->
+  <g transform="translate(40, 100)" filter="url(#shadow)">
+    <rect width="260" height="390" rx="12" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="260" height="42" rx="12" fill="#1e293b"/>
+    <text x="130" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#38bdf8" text-anchor="middle">
+      1. POS CASHIER CLIENT
+    </text>
+
+    <g transform="translate(16, 56)">
+      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Multi-Tab Cashier State</text>
+      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Zustand Slice Pattern</text>
+      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#38bdf8" text-anchor="middle">Concurrent Customer Baskets</text>
+      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Instant cart switching</text>
+    </g>
+
+    <g transform="translate(16, 165)">
+      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Virtualized Catalog</text>
+      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">TanStack Query Caching</text>
+      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#34d399" text-anchor="middle">Virtual scrolling 5,000+ items</text>
+      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Sub-50ms barcode debounce</text>
+    </g>
+
+    <g transform="translate(16, 274)">
+      <rect width="228" height="75" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Form Engine</text>
+      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">React Hook Form + Zod</text>
+      <text x="114" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#a78bfa" text-anchor="middle">Strict discount &amp; tax policies</text>
+    </g>
+  </g>
+
+  <!-- Connectors 1 to 2 -->
+  <path d="M 300 190 L 350 190" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="350,190 342,185 342,195" fill="#38bdf8"/>
+  <path d="M 300 310 L 350 310" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="350,310 342,305 342,315" fill="#10b981"/>
+
+  <!-- 2. Core POS Modules -->
+  <g transform="translate(350, 100)" filter="url(#shadow)">
+    <rect width="260" height="390" rx="12" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="260" height="42" rx="12" fill="#1e293b"/>
+    <text x="130" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#10b981" text-anchor="middle">
+      2. OMNI-CHANNEL DOMAINS
+    </text>
+
+    <g transform="translate(16, 56)">
+      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Sales Order Management</text>
+      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Split Bill / Combined Orders</text>
+      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#38bdf8" text-anchor="middle">Multi-gateway Payment Handlers</text>
+      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Cash, VietQR, EDC Card Terminal</text>
+    </g>
+
+    <g transform="translate(16, 165)">
+      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Inventory &amp; Returns</text>
+      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Real-time Stock Deductions</text>
+      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#f59e0b" text-anchor="middle">Multi-Branch Return / Warranty</text>
+      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Automated shipping label sync</text>
+    </g>
+
+    <g transform="translate(16, 274)">
+      <rect width="228" height="75" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Hardware Drivers</text>
+      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Thermal receipt ESC/POS printer</text>
+      <text x="114" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#10b981" text-anchor="middle">USB &amp; Bluetooth cash drawer</text>
+    </g>
+  </g>
+
+  <!-- Connectors 2 to 3 -->
+  <path d="M 610 190 L 660 190" stroke="#34d399" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="660,190 652,185 652,195" fill="#34d399"/>
+  <path d="M 610 320 L 660 320" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="660,320 652,315 652,325" fill="#a78bfa"/>
+
+  <!-- 3. Quality Assurance & E2E Layer -->
+  <g transform="translate(660, 100)" filter="url(#shadow)">
+    <rect width="260" height="390" rx="12" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="260" height="42" rx="12" fill="#1e293b"/>
+    <text x="130" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#a78bfa" text-anchor="middle">
+      3. QUALITY &amp; AUTOMATION
+    </text>
+
+    <g transform="translate(16, 56)">
+      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Playwright E2E Suites</text>
+      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Automated Cashier Simulation</text>
+      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#38bdf8" text-anchor="middle">Cart additions, split bill, pay</text>
+      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Zero critical regression bugs</text>
+    </g>
+
+    <g transform="translate(16, 165)">
+      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Offline Sync Guard</text>
+      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">IndexedDB Local Persistence</text>
+      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#34d399" text-anchor="middle">Auto-reconnect transaction flush</text>
+      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Guaranteed order delivery</text>
+    </g>
+
+    <g transform="translate(16, 274)">
+      <rect width="228" height="75" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Release Gates</text>
+      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Continuous Integration smoke test</text>
+      <text x="114" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#f43f5e" text-anchor="middle">Pre-deployment certification</text>
+    </g>
+  </g>
+
+  <rect x="40" y="505" width="880" height="20" rx="4" fill="#0f172a"/>
+  <text x="480" y="519" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">
+    ARCHITECTURAL DIAGRAM • SANITIZED FOR ENGINEERING PORTFOLIO SHOWCASE
+  </text>
+</svg>

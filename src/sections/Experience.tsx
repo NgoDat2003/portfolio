@@ -3,16 +3,16 @@ import SectionTitle from '../components/shared/SectionTitle'
 
 const experiences = [
   {
-    role: 'IT Application / Business Analyst',
-    company: 'Thinh The Vinh Hoa - MayCha',
-    period: '04/2026 - 06/2026',
+    role: 'Fullstack Web Developer',
+    company: 'TẬP ĐOÀN THỊNH THẾ VINH HOA',
+    period: '04/2026 - Hiện tại',
     summary:
-      'Tham gia chuẩn hóa yêu cầu QA/QC cho hệ thống chuỗi cửa hàng, theo dõi dữ liệu đồng bộ POS/SAP và xây dựng workflow hỗ trợ kiểm tra vận hành.',
+      'Phát triển và triển khai hệ thống Cổng thông tin điều hành (Web Portal), Nền tảng quản lý hợp đồng thuê và số hóa quy trình vận hành chuỗi bán lẻ F&B 300+ cửa hàng (MayCha, Tam Hảo, Thức Coffee 24/7) tích hợp SAP Business One.',
     bullets: [
-      'Phân tích checklist, scoring rules, audit planning, QC execution, evidence upload và Action Plan workflow cho 200+ cửa hàng MayCha/Tam Hảo/franchise.',
-      'Tham gia triển khai một số màn hình UI, API route và validation logic cho hệ thống QA/QC Next.js.',
-      'Viết SQL để kiểm tra lỗi đồng bộ POS/SAP theo nhóm AR, GI, JE và trạng thái xử lý.',
-      'Xây dựng workflow n8n nhẹ để tự động hóa việc theo dõi lỗi đồng bộ lặp lại.',
+      'Cổng Thông Tin Điều Hành Doanh Nghiệp (Turborepo, Next.js 15, NestJS 10): Tập trung hóa quyền truy cập và điều phối yêu cầu chuỗi 300+ cửa hàng; triển khai xác thực Microsoft Entra ID (Azure AD SSO) qua MSAL và Cookie-based JWT có Token Rotation & Replay Detection.',
+      'Nền Tảng Quản Lý Hợp Đồng Thuê Mặt Bằng (Next.js 15, NestJS, Prisma, PostgreSQL): Số hóa 100+ hợp đồng thuê mặt bằng; thiết kế module Phụ lục với tính năng mô phỏng chi phí trước (Dry-run) và cơ chế Period-locking bảo toàn tính bất biến của số liệu tài chính SAP B1.',
+      'Nội Bộ Hóa Website Thương Hiệu & CMS Thức Coffee 24/7 (React 19, Express, Drizzle ORM, PostgreSQL): Tái cấu trúc website cùng cổng CMS về hạ tầng in-house; phát triển module định vị chuỗi cửa hàng và thực hiện di chuyển toàn diện dữ liệu (Data Migration) với độ toàn vẹn cao.',
+      'Tự Động Hóa Giám Sát Dữ Liệu Bán Hàng (iPOS → DB Trung Gian → SAP B1): Giám sát luồng đồng bộ hóa đơn, doanh thu; xây dựng các workflow tự động bằng n8n để kiểm tra đối soát, phát hiện lỗi đồng bộ và gửi cảnh báo tức thì cho khối Kế toán.',
     ],
   },
   {

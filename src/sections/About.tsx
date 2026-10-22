@@ -3,24 +3,26 @@ import SectionTitle from '../components/shared/SectionTitle'
 
 export default function About() {
   const skills = [
-    'React.js',
-    'Next.js',
     'TypeScript',
-    'TanStack Query',
-    'Zustand',
-    'React Hook Form',
-    'Zod',
-    'Tailwind CSS',
-    'REST API',
-    'Playwright',
-    'Vitest',
+    'Next.js 15',
+    'React 18/19',
+    'NestJS 10',
+    'Node.js / Express',
     'PostgreSQL',
+    'Prisma / Drizzle ORM',
+    'Turborepo',
+    'Azure AD SSO (MSAL)',
+    'TanStack Query',
+    'Tailwind CSS',
+    'Playwright E2E',
+    'n8n Automation',
+    'Docker',
   ]
 
   return (
     <section id="about" className="py-24 px-8 md:px-16 lg:px-24 w-full">
       <div className="max-w-7xl mx-auto w-full">
-        <SectionTitle title="Về tôi" subtitle="Frontend, dashboard và hệ thống nội bộ" />
+        <SectionTitle title="Về tôi" subtitle="Fullstack, Web Portal & Số hóa vận hành doanh nghiệp" />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,13 +32,13 @@ export default function About() {
         >
           <div className="flex-1 text-zinc-400 text-lg md:text-xl leading-relaxed space-y-8 font-normal">
             <p>
-              Tôi là <span className="text-zinc-100 font-semibold">Ngô Quốc Đạt</span>, Junior Frontend Developer có kinh nghiệm xây dựng giao diện React/TypeScript cho POS, dashboard và các workflow quản trị nội bộ.
+              Tôi là <span className="text-zinc-100 font-semibold">Ngô Quốc Đạt</span>, Fullstack Web Developer có kinh nghiệm thực chiến trong phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình vận hành chuỗi bán lẻ F&B (<span className="text-primary font-medium">300+ cửa hàng</span>).
             </p>
             <p>
-              Điểm mạnh hiện tại của tôi là xử lý form nghiệp vụ, bảng dữ liệu, tích hợp REST API, quản lý server state và kiểm thử các luồng quan trọng bằng Playwright/Vitest.
+              Thế mạnh cốt lõi là thiết kế kiến trúc Monorepo (Turborepo), Contract-First API, phân quyền doanh nghiệp (Microsoft Entra ID / Azure AD SSO, Cookie-based JWT Token Rotation), mô phỏng tài chính (Dry-run addendum engine, Period-locking) và tự động hóa giám sát dữ liệu bán lẻ (iPOS → SAP Business One).
             </p>
             <p>
-              Tôi đang phát triển theo hướng Frontend Developer có khả năng hiểu nghiệp vụ, phối hợp backend/API và triển khai các màn hình quản trị có dữ liệu thật.
+              Tôi tập trung vào tính toàn vẹn dữ liệu, hiệu năng hệ thống và trải nghiệm vận hành trơn tru giữa các phòng ban khối văn phòng và chuỗi cửa hàng.
             </p>
           </div>
           <div className="flex-1 lg:pl-12">

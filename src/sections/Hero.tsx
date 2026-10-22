@@ -18,7 +18,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              <span className="text-muted font-medium tracking-wide text-xs uppercase">Open to Frontend Developer roles</span>
+              <span className="text-muted font-medium tracking-wide text-xs uppercase">Open to Fullstack Web Developer roles</span>
             </div>
 
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-extrabold text-white leading-[0.9] tracking-tighter mb-6">
@@ -27,7 +27,7 @@ export default function Hero() {
             </h1>
 
             <h2 className="text-xl md:text-2xl text-muted font-sans font-medium tracking-tight">
-              Junior Frontend Developer <span className="mx-3 text-white/10">|</span> React, TypeScript, Next.js
+              Fullstack Web Developer <span className="mx-3 text-white/10">|</span> Next.js 15, NestJS 10, TypeScript, PostgreSQL
             </h2>
           </motion.div>
 
@@ -37,7 +37,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-zinc-400 text-lg md:text-xl leading-relaxed max-w-xl font-normal"
           >
-            Tôi tập trung xây dựng giao diện web cho dashboard, form nghiệp vụ, data table và luồng tích hợp API. Gần đây tôi làm nhiều với hệ thống POS và QA/QC audit workflow.
+            Kỹ sư Fullstack Web với kinh nghiệm thực chiến phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình chuỗi F&B 300+ cửa hàng. Chuyên sâu Turborepo, Next.js 15, NestJS, Azure AD SSO và tự động hóa n8n.
           </motion.p>
 
           <motion.div
@@ -47,7 +47,7 @@ export default function Hero() {
             className="flex flex-wrap gap-4 pt-4"
           >
             <a
-              href="/assets/file/NgoQuocDat_Frontend_Developer_CV.pdf"
+              href="/assets/file/CV_Ngo_Quoc_Dat_Fullstack_Developer_VI.pdf"
               download
               className="px-8 py-4 bg-white text-zinc-950 font-bold text-sm rounded-full hover:scale-[1.02] transition-transform flex items-center gap-2 group"
             >
