@@ -14,7 +14,7 @@ export default {
           DEFAULT: '#2A231F',  // primary text, borders, hard shadows
           soft: '#5C524B',     // body copy
         },
-        muted: '#857A71',      // meta text, captions
+        muted: '#736860',      // meta text, captions
         accent: {
           DEFAULT: '#D9654B',  // coral: links, underlines, highlights
           dark: '#B94E36',

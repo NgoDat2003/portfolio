@@ -4,11 +4,11 @@
   <style>
     text { font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif; fill: #2A231F; }
     .h { font-size: 17px; font-weight: 700; }
-    .sub { font-size: 12px; fill: #857A71; }
+    .sub { font-size: 12px; fill: #736860; }
     .tile { font-size: 13px; font-weight: 600; }
     .small { font-size: 12px; }
     .mine { fill: #F8EBB5; stroke: #D9654B; stroke-width: 2.5; }
-    .team { fill: none; stroke: #857A71; stroke-width: 1.5; stroke-dasharray: 6 5; }
+    .team { fill: none; stroke: #736860; stroke-width: 1.5; stroke-dasharray: 6 5; }
     .panel { fill: #FFFCF7; stroke: #2A231F; stroke-width: 2; }
     .shadow { fill: #2A231F; }
     .arrow { stroke: #2A231F; stroke-width: 2; fill: none; marker-end: url(#head); }
@@ -62,7 +62,7 @@
   <text x="350" y="365" text-anchor="middle" class="tile">lookup</text>
   <rect x="450" y="322" width="150" height="58" rx="10" class="mine"/>
   <text x="525" y="346" text-anchor="middle" class="tile">Face-match</text>
-  <text x="525" y="365" text-anchor="middle" class="tile">customer pick (UI)</text>
+  <text x="525" y="365" text-anchor="middle" class="tile">customer pick (via API)</text>
 
   <rect x="270" y="400" width="330" height="70" rx="10" class="team"/>
   <text x="435" y="429" text-anchor="middle" class="tile">Zustand · TanStack Query · socket.io</text>

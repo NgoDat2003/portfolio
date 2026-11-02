@@ -1,21 +1,34 @@
 import type { ReactNode } from 'react';
 
-/** Renders `**bold**` spans inside a single line; everything else stays plain text. */
+// One capture group per token so `split` keeps the tokens: `**bold**` or `[label](https://…)`.
+const INLINE_TOKEN = /(\*\*[^*\s][^*]*\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g;
+const LINK_TOKEN = /^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/;
+
+/** Renders `**bold**` spans and external `[label](url)` links inside one line; the rest stays plain text. */
 export function renderInlineMarkdown(text: string): ReactNode[] {
-  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
-    part.startsWith('**') && part.endsWith('**') && part.length > 4 ? (
-      <strong key={index} className="font-semibold text-ink">
-        {part.slice(2, -2)}
-      </strong>
-    ) : (
-      part
-    ),
-  );
+  return text.split(INLINE_TOKEN).map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+      return (
+        <strong key={index} className="font-semibold text-ink">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    const link = part.match(LINK_TOKEN);
+    if (link) {
+      return (
+        <a key={index} href={link[2]} target="_blank" rel="noopener noreferrer" className="link-wavy break-all">
+          {link[1]}
+        </a>
+      );
+    }
+    return part;
+  });
 }
 
 /**
  * Minimal renderer for the markdown subset used in a project's `full_description`:
- * `## ` headings, `- ` bullets, `![alt](src)` figures, paragraphs and inline bold.
+ * `## ` headings, `- ` bullets, `![alt](src)` figures, paragraphs, inline bold and external links.
  * Table rows (`|`) are skipped on purpose; structured facts live in dedicated fields.
  */
 export function renderProjectMarkdown(markdown: string): ReactNode[] {

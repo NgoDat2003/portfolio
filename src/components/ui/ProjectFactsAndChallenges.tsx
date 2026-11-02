@@ -27,7 +27,7 @@ export function ProjectChallengesSection({ challenges }: { challenges?: ProjectC
 
   return (
     <section className="mt-12" aria-labelledby="project-challenges-heading">
-      <p className="font-hand text-xl text-accent">bài toán thật, cách giải thật</p>
+      <p className="font-hand text-xl text-accent-dark">bài toán thật, cách giải thật</p>
       <h2 id="project-challenges-heading" className="mt-1 text-2xl font-bold tracking-tight text-ink md:text-3xl">
         Thử thách &amp; giải pháp
       </h2>

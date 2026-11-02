@@ -15,14 +15,21 @@ function ScrollToHashOrTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
     if (!hash) {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       return;
+    }
+    // A malformed escape such as `#%` must not throw inside the effect and unmount the app.
+    let targetId = hash.slice(1);
+    try {
+      targetId = decodeURIComponent(targetId);
+    } catch {
+      // Keep the raw id.
     }
     // The target section mounts only after the previous page's exit animation, so poll briefly.
     let frameId = 0;
     const deadline = performance.now() + 1500;
     const scrollWhenMounted = () => {
-      const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      const target = document.getElementById(targetId);
       if (target) {
         target.scrollIntoView();
         return;
