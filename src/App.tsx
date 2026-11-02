@@ -1,6 +1,8 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
 import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Experience from './sections/Experience'
@@ -8,20 +10,35 @@ import Projects from './sections/Projects'
 import Contact from './sections/Contact'
 import ProjectDetail from './pages/ProjectDetail'
 
-import { AnimatePresence, motion } from 'framer-motion'
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
+/** On route change: scroll to the `#hash` section if present, otherwise to the top. */
+function ScrollToHashOrTop() {
+  const { pathname, hash } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    // The target section mounts only after the previous page's exit animation, so poll briefly.
+    let frameId = 0;
+    const deadline = performance.now() + 1500;
+    const scrollWhenMounted = () => {
+      const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (target) {
+        target.scrollIntoView();
+        return;
+      }
+      if (performance.now() < deadline) frameId = requestAnimationFrame(scrollWhenMounted);
+    };
+    scrollWhenMounted();
+    return () => cancelAnimationFrame(frameId);
+  }, [pathname, hash]);
   return null;
 }
 
 const pageVariants = {
-  initial: { opacity: 0, filter: 'blur(10px)' },
-  animate: { opacity: 1, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
-  exit: { opacity: 0, filter: 'blur(10px)', transition: { duration: 0.3 } }
+  initial: { opacity: 0, y: 8 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
 function HomePage() {
@@ -39,18 +56,22 @@ function HomePage() {
 function AppContent() {
   const location = useLocation();
   return (
-    <div className="min-h-screen relative bg-background overflow-x-hidden scroll-smooth selection:bg-primary/30 selection:text-white flex flex-col">
-      <ScrollToTop />
-      <Navbar />
-      <main className="flex-1">
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/project/:id" element={<ProjectDetail />} />
-          </Routes>
-        </AnimatePresence>
-      </main>
-    </div>
+    // MotionConfig honours the visitor's "reduce motion" OS setting for every framer-motion animation.
+    <MotionConfig reducedMotion="user">
+      <div className="relative flex min-h-screen flex-col overflow-x-hidden bg-paper">
+        <ScrollToHashOrTop />
+        <Navbar />
+        <main className="flex-1">
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/project/:id" element={<ProjectDetail />} />
+            </Routes>
+          </AnimatePresence>
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   )
 }
 

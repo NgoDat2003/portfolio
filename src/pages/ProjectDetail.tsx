@@ -1,8 +1,11 @@
 ﻿import { Link, useParams } from 'react-router-dom';
-import { Github, Globe, PlayCircle } from 'lucide-react';
+import { ArrowLeft, Github, Globe, PlayCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
+import StatusBadge from '../components/ui/StatusBadge';
+import { getProjectStatus, isRealLink, splitProjectCategory } from '../lib/project-display-helpers';
 
+/** Minimal renderer for the subset of markdown used in `full_description`. */
 function renderContent(markdown: string) {
   return markdown
     .trim()
@@ -13,7 +16,7 @@ function renderContent(markdown: string) {
 
       if (value.startsWith('## ')) {
         return (
-          <h2 key={index} className="mt-12 mb-5 text-3xl font-display font-bold text-white">
+          <h2 key={index} className="mb-4 mt-10 text-2xl font-bold tracking-tight text-ink md:text-3xl">
             {value.replace('## ', '')}
           </h2>
         );
@@ -21,8 +24,8 @@ function renderContent(markdown: string) {
 
       if (value.startsWith('- ')) {
         return (
-          <div key={index} className="mb-3 flex gap-4 text-zinc-300">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+          <div key={index} className="mb-3 flex gap-3 text-ink-soft">
+            <span className="mt-0.5 shrink-0 font-bold text-accent" aria-hidden="true">→</span>
             <span className="leading-relaxed">{value.replace('- ', '')}</span>
           </div>
         );
@@ -32,9 +35,9 @@ function renderContent(markdown: string) {
         const match = value.match(/!\[(.*?)\]\((.*?)\)/);
         if (!match) return null;
         return (
-          <figure key={index} className="my-10 overflow-hidden rounded-3xl border border-white/10 bg-surface">
+          <figure key={index} className="my-10 overflow-hidden rounded-2xl border-2 border-ink bg-card shadow-sketch-sm">
             <img src={match[2]} alt={match[1]} className="w-full object-cover" />
-            <figcaption className="border-t border-white/10 px-5 py-3 text-xs uppercase tracking-widest text-zinc-500">
+            <figcaption className="border-t-2 border-ink px-5 py-3 font-hand text-lg text-ink-soft">
               {match[1]}
             </figcaption>
           </figure>
@@ -46,7 +49,7 @@ function renderContent(markdown: string) {
       }
 
       return (
-        <p key={index} className="mb-5 text-lg leading-relaxed text-zinc-400">
+        <p key={index} className="mb-5 text-base leading-relaxed text-ink-soft md:text-lg">
           {value}
         </p>
       );
@@ -59,65 +62,66 @@ export default function ProjectDetail() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-white">
+      <div className="flex min-h-[60vh] items-center justify-center px-4">
         <div className="text-center">
-          <h1 className="mb-4 text-4xl font-bold">Không tìm thấy dự án</h1>
-          <Link to="/" className="text-primary hover:underline">Quay lại trang chủ</Link>
+          <h1 className="mb-4 text-3xl font-bold text-ink md:text-4xl">Không tìm thấy dự án</h1>
+          <Link to="/" className="link-wavy">Quay lại trang chủ</Link>
         </div>
       </div>
     );
   }
 
+  const { kind, domain } = splitProjectCategory(project.category);
+  const sourceLinks = [
+    { href: project.github_fe, label: 'FE Source' },
+    { href: project.github_be, label: 'BE Source' },
+  ].filter((link): link is { href: string; label: string } => isRealLink(link.href));
+  if (sourceLinks.length === 0 && isRealLink(project.github)) {
+    sourceLinks.push({ href: project.github, label: 'Source' });
+  }
+
   return (
-    <div className="min-h-screen bg-background px-8 py-32 overflow-x-hidden">
+    <div className="px-4 pb-16 pt-10 md:px-8 md:pt-14">
       <div className="mx-auto max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-14"
-        >
-          <Link to="/#projects" className="group flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-primary transition-colors hover:text-white">
-            <span className="transition-transform group-hover:-translate-x-2">←</span>
-            Quay lại trang chủ
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
+          <Link to="/#projects" className="group inline-flex items-center gap-2 text-sm font-semibold text-ink-soft hover:text-ink">
+            <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" aria-hidden="true" />
+            Quay lại danh sách dự án
           </Link>
 
-          <h1 className="mt-12 mb-8 text-5xl md:text-7xl font-display font-black text-white tracking-tighter leading-[0.95]">
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <span className="text-xs font-semibold uppercase tracking-[0.12em] text-ink-soft">{kind}</span>
+            <StatusBadge status={getProjectStatus(project.timeline)} />
+          </div>
+          <h1 className="mt-3 text-4xl font-extrabold leading-[1.1] tracking-tight text-ink md:text-6xl">
             {project.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-8 border-t border-white/10 pt-8">
-            <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">Phân loại</span>
-              <p className="mt-1 text-lg font-bold text-white">{project.category}</p>
-            </div>
-            <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">Thời gian</span>
-              <p className="mt-1 text-lg font-bold text-white">{project.timeline}</p>
-            </div>
-            <div className="ml-auto flex flex-wrap gap-3">
-              {project.github_fe && (
-                <a href={project.github_fe} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[10px] font-black uppercase tracking-widest text-slate-950 transition-transform hover:scale-105">
-                  FE Source <Github size={14} />
+          <div className="mt-8 flex flex-col gap-6 border-t-2 border-ink pt-6 md:flex-row md:items-center">
+            <dl className="flex flex-wrap gap-x-10 gap-y-4">
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Phân loại</dt>
+                <dd className="mt-1 text-base font-semibold text-ink">{domain || kind}</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Thời gian</dt>
+                <dd className="mt-1 text-base font-semibold text-ink">{project.timeline}</dd>
+              </div>
+            </dl>
+            <div className="flex flex-wrap gap-3 md:ml-auto">
+              {sourceLinks.map((link) => (
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="btn-ink px-5 py-2.5">
+                  {link.label} <Github size={15} aria-hidden="true" />
                 </a>
-              )}
-              {project.github_be && (
-                <a href={project.github_be} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[10px] font-black uppercase tracking-widest text-slate-950 transition-transform hover:scale-105">
-                  BE Source <Github size={14} />
-                </a>
-              )}
-              {!project.github_fe && !project.github_be && project.github !== '#' && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[10px] font-black uppercase tracking-widest text-slate-950 transition-transform hover:scale-105">
-                  Source <Github size={14} />
-                </a>
-              )}
-              {project.demo !== '#' && (
-                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-transform hover:scale-105">
-                  Live Demo <Globe size={14} />
+              ))}
+              {isRealLink(project.demo) && (
+                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-outline px-5 py-2.5">
+                  Live Demo <Globe size={15} aria-hidden="true" />
                 </a>
               )}
               {project.video && (
-                <a href={project.video} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-transform hover:scale-105">
-                  E2E Video <PlayCircle size={14} />
+                <a href={project.video} target="_blank" rel="noopener noreferrer" className="btn-outline px-5 py-2.5">
+                  E2E Video <PlayCircle size={15} aria-hidden="true" />
                 </a>
               )}
             </div>
@@ -125,9 +129,10 @@ export default function ProjectDetail() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="mb-6 aspect-video overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900 shadow-2xl"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+          className="mb-6 aspect-video overflow-hidden rounded-2xl border-2 border-ink bg-ink shadow-sketch"
         >
           {project.video ? (
             <video
@@ -145,24 +150,23 @@ export default function ProjectDetail() {
         </motion.div>
 
         {project.video && (
-          <div className="mb-16 rounded-2xl border border-primary/20 bg-primary/5 p-5 text-sm leading-relaxed text-zinc-300">
-            <p className="mb-2 text-xs font-black uppercase tracking-[0.25em] text-primary">Automated E2E happy-flow</p>
+          <div className="mb-12 rounded-2xl border-2 border-ink bg-pastel-butter p-5 text-sm leading-relaxed text-ink-soft">
+            <p className="mb-1 font-hand text-xl text-ink">Automated E2E happy-flow</p>
             <p>
               Video này được sinh từ Playwright E2E test, không phải quay tay. Flow mô phỏng người dùng thật đi qua các vai trò QAM, QC và SM: tạo audit plan, QC thực hiện checklist và upload evidence, SM xử lý Action Plan, sau đó QAM kiểm tra và đóng AP.
             </p>
           </div>
         )}
 
-        <section className="rounded-[2rem] border border-white/10 bg-surface/40 p-8 md:p-10">
-          <div className="mb-10 flex flex-wrap gap-3">
+        <section className="sketch-card mt-10 p-6 md:p-10">
+          <div className="mb-8 flex flex-wrap gap-2">
             {project.tech.map((tech) => (
-              <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-300">
-                {tech}
-              </span>
+              <span key={tech} className="chip">{tech}</span>
             ))}
           </div>
-          <p className="mb-8 text-2xl leading-relaxed text-zinc-300">{project.desc}</p>
-          <div className="space-y-1">{renderContent(project.full_description)}</div>
+          <p className="mb-6 text-xl leading-relaxed text-ink md:text-2xl">{project.desc}</p>
+          {/* No space-y here: it would override each heading's own top margin. */}
+          <div>{renderContent(project.full_description)}</div>
         </section>
       </div>
     </div>

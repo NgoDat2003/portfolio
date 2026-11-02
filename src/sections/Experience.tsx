@@ -30,57 +30,72 @@ const experiences = [
   },
 ]
 
+/** Bullets written as "Topic (stack): detail" get the topic in bold for faster scanning. */
+function ExperienceBullet({ text }: { text: string }) {
+  const separatorIndex = text.indexOf(': ')
+  if (separatorIndex === -1) return <>{text}</>
+  return (
+    <>
+      <strong className="font-semibold text-ink">{text.slice(0, separatorIndex)}:</strong>
+      {text.slice(separatorIndex + 1)}
+    </>
+  )
+}
+
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-8 md:px-16 lg:px-24 w-full">
-      <div className="max-w-7xl mx-auto w-full">
+    <section id="experience" className="px-4 py-20 md:px-8 md:py-24">
+      <div className="mx-auto max-w-6xl">
         <SectionTitle title="Sự nghiệp" subtitle="Kinh nghiệm làm việc" />
 
-        <div className="relative border-l border-white/5 pl-8 md:pl-20 ml-2 md:ml-4 space-y-20 mt-16">
-          {experiences.map((item) => (
-            <motion.div
+        <ol className="relative ml-2 space-y-12 border-l-2 border-dashed border-ink/40 pl-6 md:ml-4 md:pl-12">
+          {experiences.map((item, index) => (
+            <motion.li
               key={`${item.company}-${item.period}`}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
-              <div className="absolute -left-[45px] top-4 md:-left-[88px] md:top-6 w-3.5 h-3.5 rounded-full bg-background border-2 border-primary ring-4 ring-primary/20"></div>
+              <span
+                className={`absolute -left-[35px] top-7 h-5 w-5 rounded-full border-2 border-ink md:-left-[59px] ${index === 0 ? 'bg-pastel-butter' : 'bg-pastel-sky'}`}
+                aria-hidden="true"
+              />
 
-              <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center mb-8 gap-4">
-                <div className="space-y-2">
-                  <h3 className="text-3xl md:text-5xl font-display font-bold text-zinc-100 tracking-tight">{item.role}</h3>
-                  <h4 className="text-xl text-primary font-medium tracking-tight">{item.company}</h4>
-                </div>
-                <div className="text-xs font-bold uppercase tracking-widest text-zinc-400 bg-surface/50 px-6 py-2.5 rounded-full border border-border">
-                  {item.period}
-                </div>
-              </div>
+              <article className="sketch-card p-6 md:p-8">
+                <header className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                  <div>
+                    <h3 className="text-2xl font-bold tracking-tight text-ink md:text-3xl">{item.role}</h3>
+                    <p className="mt-1 text-base font-semibold text-accent-dark">{item.company}</p>
+                  </div>
+                  <span className="chip w-fit shrink-0 border-ink font-semibold text-ink">{item.period}</span>
+                </header>
 
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-10 lg:gap-16">
-                <div className="space-y-6">
-                  <p className="text-zinc-300 text-lg leading-relaxed font-normal">{item.summary}</p>
-                  <ul className="space-y-5">
-                    {item.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start text-base text-zinc-400 leading-relaxed font-normal">
-                        <span className="text-primary mr-4 text-xl leading-none mt-0.5 opacity-70">›</span>
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_17rem]">
+                  <div>
+                    <p className="text-base leading-relaxed text-ink md:text-lg">{item.summary}</p>
+                    <ul className="mt-5 space-y-4">
+                      {item.bullets.map((bullet) => (
+                        <li key={bullet} className="flex gap-3 text-[15px] leading-relaxed text-ink-soft">
+                          <span className="mt-0.5 shrink-0 font-bold text-accent" aria-hidden="true">→</span>
+                          <span><ExperienceBullet text={bullet} /></span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                <div className="bg-zinc-900/80 border border-primary/20 p-8 rounded-2xl flex flex-col justify-center h-full relative overflow-hidden">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-primary/70 mb-4 block">Trọng tâm</span>
-                  <p className="text-zinc-200 text-base leading-relaxed font-medium relative z-10">
-                    Dashboard, form nghiệp vụ, API integration, kiểm thử flow và xử lý dữ liệu vận hành.
-                  </p>
+                  <aside className="h-fit rotate-1 rounded-lg border-2 border-ink bg-pastel-butter p-5 shadow-sketch-sm">
+                    <p className="font-hand text-xl text-ink">Trọng tâm</p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                      Dashboard, form nghiệp vụ, API integration, kiểm thử flow và xử lý dữ liệu vận hành.
+                    </p>
+                  </aside>
                 </div>
-              </div>
-            </motion.div>
+              </article>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )
