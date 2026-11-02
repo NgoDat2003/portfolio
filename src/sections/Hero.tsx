@@ -1,80 +1,70 @@
 ﻿import { motion } from 'framer-motion'
-import GlowingAvatar from '../components/shared/GlowingAvatar'
+import { ArrowRight, Download } from 'lucide-react'
+import TapedPortraitFrame from '../components/shared/TapedPortraitFrame'
+import { profileContactInfo } from '../data/profile-contact-info'
+import HeroStatsStrip from './HeroStatsStrip'
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1]
+
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, delay, ease: EASE_OUT_EXPO },
+})
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-16 bg-grid-white px-8 md:px-16 lg:px-24 w-full">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
-        <div className="flex-1 space-y-10 w-full max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="inline-flex items-center space-x-3 mb-8 px-4 py-2 rounded-full border border-white/10 bg-surface/30 backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+    <section id="home" className="relative">
+      <div className="px-4 md:px-8">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 pb-20 pt-12 md:pt-20 lg:grid-cols-[1.2fr_0.8fr]">
+          <div>
+            <motion.div {...fadeUp(0)}>
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-card px-3 py-1 text-xs font-semibold text-ink shadow-sketch-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#5F8F4E] opacity-60 motion-reduce:animate-none" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#5F8F4E]" />
+                </span>
+                Đang tìm cơ hội Fullstack Web Developer
               </span>
-              <span className="text-muted font-medium tracking-wide text-xs uppercase">Open to Fullstack Web Developer roles</span>
-            </div>
-
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-extrabold text-white leading-[0.9] tracking-tighter mb-6">
-              NGO QUOC <br />
-              <span className="text-gradient">DAT</span>
-            </h1>
-
-            <h2 className="text-xl md:text-2xl text-muted font-sans font-medium tracking-tight">
-              Fullstack Web Developer <span className="mx-3 text-white/10">|</span> Next.js 15, NestJS 10, TypeScript, PostgreSQL
-            </h2>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-zinc-400 text-lg md:text-xl leading-relaxed max-w-xl font-normal"
-          >
-            Kỹ sư Fullstack Web với kinh nghiệm thực chiến phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình chuỗi F&B 300+ cửa hàng. Chuyên sâu Turborepo, Next.js 15, NestJS, Azure AD SSO và tự động hóa n8n.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap gap-4 pt-4"
-          >
-            <a
-              href="/assets/file/CV_Ngo_Quoc_Dat_Fullstack_Developer_VI.pdf"
-              download
-              className="px-8 py-4 bg-white text-zinc-950 font-bold text-sm rounded-full hover:scale-[1.02] transition-transform flex items-center gap-2 group"
-            >
-              Tải xuống CV
-              <svg className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-            </a>
-            <a
-              href="#projects"
-              className="px-8 py-4 bg-surface text-white font-medium text-sm rounded-full border border-border hover:border-border-hover transition-colors flex items-center gap-2 group"
-            >
-              Xem dự án
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </motion.div>
-        </div>
-
-        <div className="flex-none hidden lg:block relative z-10 w-[450px]">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl"></div>
-            <GlowingAvatar imageSrc="/assets/cv.png" />
+  
+              <p className="mt-8 font-hand text-2xl text-ink-soft md:text-3xl">Xin chào, tôi là Đạt.</p>
+              <h1 className="mt-3 font-extrabold tracking-tight text-ink">
+                <span className="marker-highlight text-4xl leading-[1.15] sm:text-5xl lg:text-[3.4rem]">Fullstack Web Developer</span>
+                <span className="mt-3 block text-2xl leading-snug text-ink-soft sm:text-3xl lg:text-[2.1rem]">
+                  xây hệ thống vận hành cho chuỗi 300+ cửa hàng
+                </span>
+              </h1>
+              <p className="mt-5 text-base font-medium text-muted md:text-lg">
+                Next.js 15 · NestJS 10 · TypeScript · PostgreSQL
+              </p>
+            </motion.div>
+  
+            <motion.p {...fadeUp(0.1)} className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
+              Kỹ sư Fullstack Web với kinh nghiệm thực chiến phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình chuỗi F&B 300+ cửa hàng. Chuyên sâu Turborepo, Next.js 15, NestJS, Azure AD SSO và tự động hóa n8n.
+            </motion.p>
+  
+            <motion.div {...fadeUp(0.2)} className="mt-8 flex flex-wrap gap-3">
+              <a href={profileContactInfo.cvUrl} download className="btn-ink">
+                Tải xuống CV <Download size={16} aria-hidden="true" />
+              </a>
+              <a href="#projects" className="btn-outline">
+                Xem dự án <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </motion.div>
+          </div>
+  
+          <div className="flex justify-center lg:justify-end">
+            <TapedPortraitFrame
+              imageSrc="/assets/cv.png"
+              alt={`Ảnh chân dung ${profileContactInfo.fullName}`}
+              caption={profileContactInfo.fullName}
+              note="Contract-first API & Azure AD SSO"
+            />
           </div>
         </div>
       </div>
+
+      <HeroStatsStrip />
     </section>
   )
 }

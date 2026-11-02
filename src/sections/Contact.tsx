@@ -1,75 +1,64 @@
 ﻿import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, type MouseEvent } from 'react'
+import { Download, Github, Mail } from 'lucide-react'
+import { profileContactInfo } from '../data/profile-contact-info'
+
+const MAIL_SUBJECT = 'Fullstack Developer Opportunity'
 
 export default function Contact() {
-  const [isCopied, setIsCopied] = useState(false);
+  const [isCopied, setIsCopied] = useState(false)
+  const { email, phone, githubUrl, cvUrl } = profileContactInfo
+  const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(MAIL_SUBJECT)}`
 
-  const handleEmailClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    const email = 'ngodat200319@gmail.com';
-
-    navigator.clipboard.writeText(email).then(() => {
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 3000);
-      setTimeout(() => {
-        window.location.href = `mailto:${email}?subject=Frontend Developer Opportunity`;
-      }, 500);
-    }).catch(() => {
-      window.location.href = `mailto:${email}?subject=Frontend Developer Opportunity`;
-    });
-  };
+  // Copy the address first (handy when no mail client is set up), then open the mail client.
+  const handleEmailClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    navigator.clipboard
+      .writeText(email)
+      .then(() => {
+        setIsCopied(true)
+        setTimeout(() => setIsCopied(false), 3000)
+        setTimeout(() => {
+          window.location.href = mailtoUrl
+        }, 500)
+      })
+      .catch(() => {
+        window.location.href = mailtoUrl
+      })
+  }
 
   return (
-    <section id="contact" className="py-32 flex flex-col items-center relative overflow-hidden border-t border-white/5 bg-zinc-950/50">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="text-5xl md:text-8xl lg:text-9xl font-display font-bold text-zinc-100 mb-8 leading-none tracking-tighter text-center"
-      >
-        Liên hệ <br className="md:hidden" /><span className="text-gradient">với tôi</span>.
-      </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="text-zinc-400 text-lg md:text-xl max-w-2xl mb-16 font-normal leading-relaxed text-center px-8"
-      >
-        Tôi đang tìm kiếm cơ hội Frontend Developer, ưu tiên các sản phẩm web app, dashboard, admin portal và hệ thống quản trị nội bộ.
-      </motion.p>
-
+    <section id="contact" className="px-4 py-20 md:px-8 md:py-24">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-wrap justify-center gap-6"
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="mx-auto max-w-4xl rounded-3xl border-2 border-dashed border-ink bg-card px-6 py-12 text-center md:px-14 md:py-16"
       >
-        <a
-          href="mailto:ngodat200319@gmail.com"
-          onClick={handleEmailClick}
-          className="px-8 py-4 bg-white text-zinc-950 font-bold text-sm tracking-wide rounded-full hover:scale-[1.02] transition-transform min-w-[200px] flex justify-center items-center gap-2 group"
-        >
-          {isCopied ? 'Đã copy email' : 'Gửi email'}
-        </a>
-        <a
-          href="https://github.com/NgoDat2003"
-          target="_blank"
-          rel="noreferrer"
-          className="px-8 py-4 bg-surface text-white font-medium text-sm tracking-wide rounded-full border border-border hover:border-white/20 transition-colors min-w-[200px] flex justify-center items-center"
-        >
-          GitHub Profile
-        </a>
-      </motion.div>
+        <p className="font-hand text-xl text-ink-soft md:text-2xl">Bạn đang tuyển Fullstack Developer?</p>
+        <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-ink md:text-5xl">Liên hệ với tôi</h2>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-ink-soft md:text-lg">
+          Tôi đang tìm kiếm cơ hội Fullstack Web Developer, ưu tiên các sản phẩm web app, dashboard, admin portal và hệ thống quản trị nội bộ.
+        </p>
 
-      <div className="mt-40 text-zinc-600 text-[10px] font-bold uppercase tracking-widest text-center">
-        © 2026 Ngô Quốc Đạt · 0377574337 · Frontend Developer
-      </div>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <a href={mailtoUrl} onClick={handleEmailClick} className="btn-ink min-w-[180px]" aria-live="polite">
+            <Mail size={16} aria-hidden="true" />
+            {isCopied ? 'Đã copy email' : 'Gửi email'}
+          </a>
+          <a href={githubUrl} target="_blank" rel="noreferrer" className="btn-outline min-w-[180px]">
+            <Github size={16} aria-hidden="true" /> GitHub
+          </a>
+          <a href={cvUrl} download className="btn-outline min-w-[180px]">
+            <Download size={16} aria-hidden="true" /> Tải CV
+          </a>
+        </div>
+
+        <p className="mt-8 text-sm text-muted">
+          {email} · {phone}
+        </p>
+      </motion.div>
     </section>
   )
 }
