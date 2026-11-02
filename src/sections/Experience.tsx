@@ -5,7 +5,7 @@ const experiences = [
   {
     role: 'Fullstack Web Developer',
     company: 'TẬP ĐOÀN THỊNH THẾ VINH HOA',
-    period: '04/2026 - 11/2026',
+    period: '04/2026 - Hiện tại',
     summary:
       'Tập đoàn F&B vận hành chuỗi 200+ cửa hàng (MayCha, Tam Hảo, Thức Coffee, Trà Hú, Gà Giòn Sốt). Phát triển các hệ thống quản trị nội bộ: quản lý hợp đồng thuê mặt bằng, kiểm toán chất lượng QA/QC, website thương hiệu và giám sát dữ liệu SAP B1.',
     focus: 'Phân tích nghiệp vụ cùng người dùng, thiết kế hệ thống, REST API với NestJS, dashboard và tự động hóa đối soát dữ liệu bằng n8n.',
