@@ -4,11 +4,11 @@
   <style>
     text { font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif; fill: #2A231F; }
     .h { font-size: 17px; font-weight: 700; }
-    .sub { font-size: 12px; fill: #857A71; }
+    .sub { font-size: 12px; fill: #736860; }
     .tile { font-size: 13px; font-weight: 600; }
     .small { font-size: 12px; }
     .mine { fill: #F8EBB5; stroke: #D9654B; stroke-width: 2.5; }
-    .team { fill: none; stroke: #857A71; stroke-width: 1.5; stroke-dasharray: 6 5; }
+    .team { fill: none; stroke: #736860; stroke-width: 1.5; stroke-dasharray: 6 5; }
     .panel { fill: #FFFCF7; stroke: #2A231F; stroke-width: 2; }
     .chip { fill: #D8E6EF; stroke: #2A231F; stroke-width: 1.5; }
     .shadow { fill: #2A231F; }
@@ -63,12 +63,12 @@
   <rect x="298" y="230" width="250" height="40" rx="10" class="team"/>
   <text x="423" y="255" text-anchor="middle" class="small">Send-message background jobs</text>
   <rect x="298" y="278" width="250" height="40" rx="10" class="team"/>
-  <text x="423" y="303" text-anchor="middle" class="small">AI auto-reply agent</text>
+  <text x="423" y="303" text-anchor="middle" class="small">Auto-reply engine</text>
 
-  <rect x="298" y="334" width="250" height="40" rx="10" class="mine"/>
-  <text x="423" y="359" text-anchor="middle" class="tile">Order history API</text>
+  <rect x="298" y="334" width="250" height="40" rx="10" class="team"/>
+  <text x="423" y="359" text-anchor="middle" class="small">Unified conversation query API</text>
   <rect x="298" y="384" width="250" height="40" rx="10" class="mine"/>
-  <text x="423" y="409" text-anchor="middle" class="tile">Unified conversation query API</text>
+  <text x="423" y="409" text-anchor="middle" class="tile">Order history API</text>
   <rect x="298" y="434" width="250" height="40" rx="10" class="mine"/>
   <text x="423" y="459" text-anchor="middle" class="tile">Per-channel auto-reply switch</text>
 
@@ -89,7 +89,7 @@
   <text x="774" y="221" text-anchor="middle" class="small">inactive filter · 14 / 30 / 60 days</text>
   <rect x="646" y="244" width="256" height="56" rx="10" class="mine"/>
   <text x="774" y="267" text-anchor="middle" class="tile">Chat window</text>
-  <text x="774" y="287" text-anchor="middle" class="small">files · emoji · reply suggestions</text>
+  <text x="774" y="287" text-anchor="middle" class="small">files · emoji · image messages</text>
   <rect x="646" y="310" width="256" height="40" rx="10" class="mine"/>
   <text x="774" y="335" text-anchor="middle" class="tile">Expired chat → input locked</text>
   <rect x="646" y="360" width="256" height="56" rx="10" class="mine"/>

@@ -8,6 +8,7 @@ const experiences = [
     period: '04/2026 - Hiện tại',
     summary:
       'Phát triển và triển khai hệ thống Cổng thông tin điều hành (Web Portal), Nền tảng quản lý hợp đồng thuê và số hóa quy trình vận hành chuỗi bán lẻ F&B 300+ cửa hàng (MayCha, Tam Hảo, Thức Coffee 24/7) tích hợp SAP Business One.',
+    focus: 'Dashboard, form nghiệp vụ, API integration, kiểm thử flow và xử lý dữ liệu vận hành.',
     bullets: [
       'Cổng Thông Tin Điều Hành Doanh Nghiệp (Turborepo, Next.js 15, NestJS 10): Tập trung hóa quyền truy cập và điều phối yêu cầu chuỗi 300+ cửa hàng; triển khai xác thực Microsoft Entra ID (Azure AD SSO) qua MSAL và Cookie-based JWT có Token Rotation & Replay Detection.',
       'Nền Tảng Quản Lý Hợp Đồng Thuê Mặt Bằng (Next.js 15, NestJS, Prisma, PostgreSQL): Số hóa 100+ hợp đồng thuê mặt bằng; thiết kế module Phụ lục với tính năng mô phỏng chi phí trước (Dry-run) và cơ chế Period-locking bảo toàn tính bất biến của số liệu tài chính SAP B1.',
@@ -21,6 +22,7 @@ const experiences = [
     period: '06/2025 - 03/2026',
     summary:
       'Phát triển InnoERP, nền tảng ERP trên Frappe/ERPNext cho doanh nghiệp bán lẻ Việt Nam: frontend React cho màn hình bán hàng Inno POS và hộp thư đa kênh OmniChat, kèm API Python cho các màn hình này.',
+    focus: 'Luồng thanh toán và khuyến mãi POS, form nghiệp vụ, API Python trên ERPNext và giao diện hộp thư đa kênh.',
     bullets: [
       'Inno POS (React, TypeScript, Zustand, TanStack Query): Thành viên chính của module POS; làm thanh toán chia nhiều phương thức và VietQR, khuyến mãi 3 tầng, trả hàng hoàn tiền đúng phương thức, phiếu sửa chữa và xem tồn kho chi nhánh khác.',
       'API Python trên ERPNext: Viết API tìm hóa đơn POS và tổng hợp tiền thu theo phương thức, tài khoản ngân hàng, quầy và loại đơn; API tổng hợp tồn kho và doanh số theo chi nhánh.',
@@ -87,9 +89,7 @@ export default function Experience() {
 
                   <aside className="h-fit rotate-1 rounded-lg border-2 border-ink bg-pastel-butter p-5 shadow-sketch-sm">
                     <p className="font-hand text-xl text-ink">Trọng tâm</p>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                      Dashboard, form nghiệp vụ, API integration, kiểm thử flow và xử lý dữ liệu vận hành.
-                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.focus}</p>
                   </aside>
                 </div>
               </article>

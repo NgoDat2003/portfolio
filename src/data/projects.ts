@@ -10,7 +10,7 @@ export interface Project {
   title: string;
   category: string;
   timeline: string;
-  // Optional case-study facts and challenges; entries without them render the classic layout.
+  // Optional case-study facts and challenges; entries without them show only category and timeline.
   role?: string;
   client?: string;
   platform?: string;
@@ -269,8 +269,8 @@ POS mặc định của ERPNext không đáp ứng nghiệp vụ bán lẻ Việ
     tech_detail: 'React 19, Vite, Zustand, TanStack Query, emoji-mart, React Bootstrap; Python, Frappe Framework, ERPNext, Frappe Realtime (Socket.IO).',
     deploy_note: 'Module thương mại của InnoERP (TADALABS), mã nguồn nội bộ. Portfolio mô tả phần đóng góp và sơ đồ kiến trúc.',
     achievements: [
-      'Làm bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày và chuyển truy vấn hội thoại sang một API hợp nhất phía server.',
-      'Làm khung chat có đính kèm file, emoji, gợi ý câu trả lời và tự khóa ô nhập khi hội thoại hết hạn.',
+      'Làm bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày và chuyển danh sách hội thoại sang gọi API truy vấn hợp nhất phía server.',
+      'Làm khung chat có đính kèm file, emoji, hiển thị tin nhắn ảnh và file, và tự khóa ô nhập khi hội thoại hết hạn.',
       'Làm panel lịch sử đơn hàng trong khung chat cùng API Python get_order_history.',
       'Làm công tắc bật/tắt trả lời tự động theo từng kênh.',
     ],
@@ -288,7 +288,7 @@ POS mặc định của ERPNext không đáp ứng nghiệp vụ bán lẻ Việ
       {
         title: 'Hộp thư lẫn hội thoại cũ',
         problem: 'Hội thoại đã nguội nằm lẫn với khách đang hoạt động, nên nhân viên khó biết cần ưu tiên trả lời ai.',
-        solution: 'Làm bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày, và chuyển việc truy vấn hội thoại sang một API hợp nhất phía server.',
+        solution: 'Làm bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày, và chuyển danh sách hội thoại sang gọi API truy vấn hợp nhất phía server.',
       },
       {
         title: 'Hội thoại hết hạn trả lời',
@@ -303,8 +303,8 @@ Trước đó nhân viên chăm sóc khách hàng phải trực nhiều ứng d�
 
 ## Vai trò & đóng góp
 Team lead phụ trách kiến trúc module, kết nối các nền tảng và phần trả lời tự động. Phần tôi làm là giao diện cho nhân viên và API lịch sử đơn hàng:
-- **Danh sách hội thoại:** bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày; chuyển truy vấn hội thoại sang một API hợp nhất phía server.
-- **Khung chat:** ô nhập có đính kèm file, emoji và gợi ý câu trả lời; hiển thị tin nhắn ảnh và file; tự khóa ô nhập khi hội thoại đã hết hạn.
+- **Danh sách hội thoại:** bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày; chuyển danh sách hội thoại sang gọi API truy vấn hợp nhất phía server.
+- **Khung chat:** ô nhập có đính kèm file và emoji; hiển thị tin nhắn ảnh và file; tự khóa ô nhập khi hội thoại đã hết hạn.
 - **Lịch sử đơn hàng trong khung chat:** panel đơn hàng và modal chi tiết đơn cập nhật realtime, cùng API Python get_order_history.
 - **Bật/tắt trả lời tự động theo kênh:** công tắc trên giao diện và cờ cấu hình tương ứng phía backend.
 - **Phiên bản đầu tiên:** khung chat, polling tin nhắn, cấu hình kênh và bản địa hóa tiếng Việt.
