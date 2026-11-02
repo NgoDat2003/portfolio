@@ -17,15 +17,15 @@ const experiences = [
   },
   {
     role: 'Frontend Developer',
-    company: 'TADALABS - Inno POS Enterprise',
+    company: 'TADALABS - InnoERP',
     period: '06/2025 - 03/2026',
     summary:
-      'Phát triển các module frontend cho hệ thống POS đa kênh, tập trung vào form nghiệp vụ, data table, API integration và kiểm thử flow quan trọng.',
+      'Phát triển InnoERP, nền tảng ERP trên Frappe/ERPNext cho doanh nghiệp bán lẻ Việt Nam: frontend React cho màn hình bán hàng Inno POS và hộp thư đa kênh OmniChat, kèm API Python cho các màn hình này.',
     bullets: [
-      'Phát triển các module Sales, Inventory, Shipping và Repair Order bằng React.js/TypeScript.',
-      'Xây dựng form động với React Hook Form và Zod để tái sử dụng validation giữa nhiều màn hình.',
-      'Tối ưu server state với TanStack Query, giảm request lặp và cải thiện độ phản hồi UI.',
-      'Viết Playwright test cho login, sales order, checkout và regression flow.',
+      'Inno POS (React, TypeScript, Zustand, TanStack Query): Thành viên chính của module POS; làm thanh toán chia nhiều phương thức và VietQR, khuyến mãi 3 tầng, trả hàng hoàn tiền đúng phương thức, phiếu sửa chữa và xem tồn kho chi nhánh khác.',
+      'API Python trên ERPNext: Viết API tìm hóa đơn POS và tổng hợp tiền thu theo phương thức, tài khoản ngân hàng, quầy và loại đơn; API tổng hợp tồn kho và doanh số theo chi nhánh.',
+      'OmniChat (React, Zustand, Socket.IO): Đóng góp giao diện hộp thư đa kênh gồm bộ lọc khách không tương tác, khung chat tự khóa khi hội thoại hết hạn, và lịch sử đơn hàng ngay trong khung chat kèm API riêng.',
+      'Form nghiệp vụ (React Hook Form, Zod): Xây dựng form có validation dùng lại giữa nhiều màn hình POS.',
     ],
   },
 ]
