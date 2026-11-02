@@ -3,58 +3,9 @@ import { ArrowLeft, Github, Globe, PlayCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import StatusBadge from '../components/ui/StatusBadge';
+import { ProjectChallengesSection, ProjectFactsList } from '../components/ui/ProjectFactsAndChallenges';
 import { getProjectStatus, isRealLink, splitProjectCategory } from '../lib/project-display-helpers';
-
-/** Minimal renderer for the subset of markdown used in `full_description`. */
-function renderContent(markdown: string) {
-  return markdown
-    .trim()
-    .split('\n')
-    .map((line, index) => {
-      const value = line.trim();
-      if (!value) return null;
-
-      if (value.startsWith('## ')) {
-        return (
-          <h2 key={index} className="mb-4 mt-10 text-2xl font-bold tracking-tight text-ink md:text-3xl">
-            {value.replace('## ', '')}
-          </h2>
-        );
-      }
-
-      if (value.startsWith('- ')) {
-        return (
-          <div key={index} className="mb-3 flex gap-3 text-ink-soft">
-            <span className="mt-0.5 shrink-0 font-bold text-accent" aria-hidden="true">→</span>
-            <span className="leading-relaxed">{value.replace('- ', '')}</span>
-          </div>
-        );
-      }
-
-      if (value.startsWith('![')) {
-        const match = value.match(/!\[(.*?)\]\((.*?)\)/);
-        if (!match) return null;
-        return (
-          <figure key={index} className="my-10 overflow-hidden rounded-2xl border-2 border-ink bg-card shadow-sketch-sm">
-            <img src={match[2]} alt={match[1]} className="w-full object-cover" />
-            <figcaption className="border-t-2 border-ink px-5 py-3 font-hand text-lg text-ink-soft">
-              {match[1]}
-            </figcaption>
-          </figure>
-        );
-      }
-
-      if (value.startsWith('|')) {
-        return null;
-      }
-
-      return (
-        <p key={index} className="mb-5 text-base leading-relaxed text-ink-soft md:text-lg">
-          {value}
-        </p>
-      );
-    });
-}
+import { renderProjectMarkdown } from '../lib/render-project-markdown';
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -97,17 +48,17 @@ export default function ProjectDetail() {
             {project.title}
           </h1>
 
-          <div className="mt-8 flex flex-col gap-6 border-t-2 border-ink pt-6 md:flex-row md:items-center">
-            <dl className="flex flex-wrap gap-x-10 gap-y-4">
-              <div>
-                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Phân loại</dt>
-                <dd className="mt-1 text-base font-semibold text-ink">{domain || kind}</dd>
-              </div>
-              <div>
-                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Thời gian</dt>
-                <dd className="mt-1 text-base font-semibold text-ink">{project.timeline}</dd>
-              </div>
-            </dl>
+          <div className="mt-8 flex flex-col gap-6 border-t-2 border-ink pt-6 md:flex-row md:items-start">
+            <ProjectFactsList
+              facts={[
+                { label: 'Phân loại', value: domain || kind },
+                { label: 'Thời gian', value: project.timeline },
+                { label: 'Vai trò', value: project.role },
+                { label: 'Nền tảng', value: project.platform },
+                { label: 'Khách hàng', value: project.client },
+                { label: 'Team', value: project.team },
+              ]}
+            />
             <div className="flex flex-wrap gap-3 md:ml-auto">
               {sourceLinks.map((link) => (
                 <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="btn-ink px-5 py-2.5">
@@ -166,8 +117,10 @@ export default function ProjectDetail() {
           </div>
           <p className="mb-6 text-xl leading-relaxed text-ink md:text-2xl">{project.desc}</p>
           {/* No space-y here: it would override each heading's own top margin. */}
-          <div>{renderContent(project.full_description)}</div>
+          <div>{renderProjectMarkdown(project.full_description)}</div>
         </section>
+
+        <ProjectChallengesSection challenges={project.challenges} />
       </div>
     </div>
   );

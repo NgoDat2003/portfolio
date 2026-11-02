@@ -1,8 +1,21 @@
+/** One "challenge → solution" pair shown as a card on the project detail page. */
+export interface ProjectChallenge {
+  title: string;
+  problem: string;
+  solution: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   category: string;
   timeline: string;
+  // Optional case-study facts and challenges; entries without them render the classic layout.
+  role?: string;
+  client?: string;
+  platform?: string;
+  team?: string;
+  challenges?: ProjectChallenge[];
   desc: string;
   tech_detail: string;
   deploy_note: string;
@@ -185,31 +198,120 @@ Trong môi trường chuỗi F&B tốc độ cao với hàng chục nghìn giao 
   },
   {
     id: 'inno-pos',
-    title: 'Inno POS Enterprise Modules',
-    category: 'Frontend / POS Workflow & Retail Tech',
+    title: 'Inno POS — Retail Checkout on ERPNext',
+    category: 'Frontend + Python API / Retail POS trên ERPNext',
     timeline: '06/2025 - 03/2026',
-    desc: 'Phân hệ bán hàng, kho hàng đa kênh và quy trình xử lý đơn đổi trả/bảo hành cho hệ thống POS doanh nghiệp, tối ưu danh mục lớn với TanStack Query và Virtualized Lists.',
-    tech_detail: 'React, TypeScript, Vite, Zustand Slice Pattern, TanStack Query, React Hook Form, Zod, Playwright E2E.',
-    deploy_note: 'Dự án doanh nghiệp nội bộ. Portfolio trình bày sơ đồ kiến trúc module và giải pháp xử lý state.',
+    role: 'Frontend Developer, kiêm API Python cho POS',
+    platform: 'Web — React SPA chạy trong ERPNext',
+    client: 'Chuỗi bán lẻ nhiều chi nhánh (khách hàng doanh nghiệp)',
+    team: 'Team sản phẩm InnoERP tại TADALABS',
+    desc: 'Màn hình bán hàng cho thu ngân trên nền ERPNext: khuyến mãi 3 tầng, chia thanh toán và VietQR, trả hàng hoàn tiền đúng phương thức, phiếu sửa chữa, kèm API Python đối soát tiền thu theo quầy và phương thức thanh toán.',
+    tech_detail: 'React 19, TypeScript, Vite, Zustand, TanStack Query, TanStack Router, TanStack Table, React Hook Form, Zod, Radix UI, Tailwind CSS 4, socket.io-client; Python, Frappe Framework, ERPNext, MariaDB.',
+    deploy_note: 'Sản phẩm thương mại của TADALABS, mã nguồn nội bộ. Portfolio mô tả nghiệp vụ, phần đóng góp và sơ đồ kiến trúc.',
     achievements: [
-      'Thiết kế kiến trúc State quản lý giỏ hàng và nhiều tab bán hàng song song bằng Zustand Slice Pattern.',
-      'Áp dụng TanStack Query caching kết hợp kỹ thuật Virtualized Lists để render danh mục sản phẩm lớn, đạt phản hồi dưới 50ms khi tìm kiếm mặt hàng.',
-      'Xây dựng các form thiết lập chính sách bán hàng và khuyến mãi phức tạp với React Hook Form và Zod.',
-      'Viết các kịch bản kiểm thử tự động với Playwright E2E mô phỏng luồng thanh toán và chia tách hóa đơn.',
+      'Làm luồng thanh toán chia một hóa đơn ra nhiều phương thức và thanh toán VietQR với mã QR lấy từ API.',
+      'Làm giỏ hàng có khuyến mãi 3 tầng (theo sản phẩm, theo hóa đơn, coupon) cùng quà tặng và hàng tặng kèm.',
+      'Làm trả hàng với tiền hoàn được phân bổ ngược về đúng các phương thức khách đã trả.',
+      'Viết API Python tìm hóa đơn POS và tổng hợp tiền thu theo phương thức, tài khoản ngân hàng, quầy và loại đơn.',
     ],
-    tech: ['React', 'TypeScript', 'Zustand', 'TanStack Query', 'Playwright', 'Zod'],
+    tech: ['React', 'TypeScript', 'Zustand', 'TanStack Query', 'Python', 'ERPNext'],
     github: '#',
     demo: '#',
     image: '/assets/diagrams/inno-pos-architecture.svg',
     images: ['/assets/diagrams/inno-pos-architecture.svg'],
+    challenges: [
+      {
+        title: 'Đối soát tiền thu theo nhiều chiều',
+        problem: 'Quản lý cửa hàng cần biết đã thu bao nhiêu theo từng phương thức thanh toán, tài khoản ngân hàng, quầy và loại đơn, kể cả những đơn khách mới trả một phần.',
+        solution: 'Viết lại API tìm hóa đơn POS và tách riêng API tổng hợp tiền thu, thêm dần từng bộ lọc rồi tối ưu câu truy vấn, để màn hình POS hiện danh sách hóa đơn kèm tổng tiền trên cùng một trang.',
+      },
+      {
+        title: 'Khuyến mãi chồng nhiều lớp',
+        problem: 'Khuyến mãi theo sản phẩm, khuyến mãi theo hóa đơn và coupon có thể cùng áp dụng cho một giỏ hàng, kèm cả quà tặng.',
+        solution: 'Xử lý khuyến mãi theo từng dòng hàng và khuyến mãi cấp hóa đơn ở hai lớp riêng, cùng với phát hành coupon và hàng tặng kèm, để tổng tiền trong giỏ khớp với hóa đơn được tạo.',
+      },
+      {
+        title: 'Thanh toán nhiều phương thức và hoàn tiền',
+        problem: 'Một hóa đơn có thể được trả bằng nhiều phương thức, trong đó có QR ngân hàng. Khi khách trả hàng, tiền hoàn phải quay về đúng các phương thức đó.',
+        solution: 'Làm luồng chia thanh toán và VietQR, cùng logic phân bổ tiền hoàn ngược về các phương thức đã thanh toán của hóa đơn gốc.',
+      },
+    ],
     full_description: `
 ## Tổng quan
-Inno POS Enterprise là hệ sinh thái máy bán hàng và phần mềm quản trị bán lẻ đa kênh phục vụ các chuỗi thương mại quy mô vừa và lớn.
+InnoERP là nền tảng ERP của TADALABS, xây trên Frappe/ERPNext cho doanh nghiệp bán lẻ Việt Nam. Inno POS là màn hình bán hàng cho thu ngân và quản lý cửa hàng, chạy trực tiếp trên dữ liệu ERPNext.
+POS mặc định của ERPNext không đáp ứng nghiệp vụ bán lẻ Việt Nam: thiếu VietQR, thiếu khuyến mãi nhiều tầng, thiếu đổi trả có hoàn tiền và không xem được tồn kho ở chi nhánh khác. Inno POS là một SPA React riêng, thay cho POS mặc định để giải các bài toán đó.
 
-## Đóng góp kỹ thuật
-- Thiết kế luồng xử lý thu ngân hỗ trợ mở nhiều tab đơn hàng đồng thời cho nhiều khách chờ.
-- Tối ưu hóa hiệu năng render danh mục với Virtualized scrolling, đảm bảo trải nghiệm cuộn mượt mà ngay cả khi số lượng mặt hàng lên tới hàng nghìn mã SKU.
-- Thiết lập quy trình kiểm thử E2E tự động trước mỗi đợt release tính năng mới.
+## Vai trò & đóng góp
+- **Thanh toán:** chia một hóa đơn ra nhiều phương thức; thanh toán VietQR với mã QR lấy từ API.
+- **Khuyến mãi 3 tầng:** theo sản phẩm, theo hóa đơn và coupon, kèm quà tặng và hàng tặng kèm.
+- **Trả hàng & hoàn tiền:** tiền hoàn được phân bổ ngược về đúng phương thức khách đã trả.
+- **Nghiệp vụ cửa hàng:** phiếu sửa chữa, giao nhanh, nhiều đơn vị tính, xem tồn kho ở chi nhánh khác.
+- **Chọn khách hàng bằng khuôn mặt:** tích hợp màn hình chọn khách từ kết quả nhận diện khuôn mặt của API có sẵn; phần nhận diện không do tôi làm.
+- **API Python cho POS:** viết search_pos_invoices và get_pos_invoice_total_payment để tìm hóa đơn và tổng hợp tiền thu; thêm API tổng hợp tồn kho và doanh số theo chi nhánh.
+- **Mẫu in & bản địa hóa:** mẫu in hóa đơn POS và phiếu sửa chữa; bản dịch tiếng Việt cho các màn hình mới.
+
+## Kiến trúc
+- SPA React 19 + TypeScript build bằng Vite, được phục vụ như asset của một custom app Frappe.
+- Gọi API whitelisted của ERPNext; state giỏ hàng bằng Zustand, server state bằng TanStack Query, realtime qua socket.io.
+- Backend là custom app Python ghi đè DocType POS Invoice của ERPNext.
+`,
+  },
+  {
+    id: 'omnichat',
+    title: 'OmniChat — Omnichannel Inbox in ERP',
+    category: 'Frontend + Python API / Hộp thư đa kênh trong ERP',
+    timeline: '07/2025 - 12/2025',
+    role: 'Frontend Developer (giao diện cho nhân viên) + API lịch sử đơn hàng',
+    platform: 'Web — trang hộp thư trong ERPNext Desk',
+    client: 'Doanh nghiệp bán lẻ dùng InnoERP',
+    team: 'Module của team InnoERP; 1 trong 3 người làm giao diện chính',
+    desc: 'Hộp thư gom tin nhắn khách hàng từ Zalo, Facebook, Instagram, Shopee, Lazada và TikTok Shop về một nơi trong ERP. Đóng góp chính: giao diện hộp thư cho nhân viên, bộ lọc khách không tương tác và lịch sử đơn hàng ngay trong khung chat, kèm API riêng.',
+    tech_detail: 'React 19, Vite, Zustand, TanStack Query, emoji-mart, React Bootstrap; Python, Frappe Framework, ERPNext, Frappe Realtime (Socket.IO).',
+    deploy_note: 'Module thương mại của InnoERP (TADALABS), mã nguồn nội bộ. Portfolio mô tả phần đóng góp và sơ đồ kiến trúc.',
+    achievements: [
+      'Làm bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày và chuyển truy vấn hội thoại sang một API hợp nhất phía server.',
+      'Làm khung chat có đính kèm file, emoji, gợi ý câu trả lời và tự khóa ô nhập khi hội thoại hết hạn.',
+      'Làm panel lịch sử đơn hàng trong khung chat cùng API Python get_order_history.',
+      'Làm công tắc bật/tắt trả lời tự động theo từng kênh.',
+    ],
+    tech: ['React', 'Zustand', 'TanStack Query', 'Socket.IO', 'Python', 'ERPNext'],
+    github: '#',
+    demo: '#',
+    image: '/assets/diagrams/omnichat-architecture.svg',
+    images: ['/assets/diagrams/omnichat-architecture.svg'],
+    challenges: [
+      {
+        title: 'Xem đơn hàng ngay khi đang chat',
+        problem: 'Muốn tư vấn hay xử lý khiếu nại, nhân viên phải rời hộp thư và mở ERP ở chỗ khác để tra đơn của khách.',
+        solution: 'Thêm panel lịch sử đơn và modal chi tiết đơn ngay cạnh hội thoại, lấy dữ liệu qua API get_order_history viết riêng cho màn hình này và cập nhật realtime.',
+      },
+      {
+        title: 'Hộp thư lẫn hội thoại cũ',
+        problem: 'Hội thoại đã nguội nằm lẫn với khách đang hoạt động, nên nhân viên khó biết cần ưu tiên trả lời ai.',
+        solution: 'Làm bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày, và chuyển việc truy vấn hội thoại sang một API hợp nhất phía server.',
+      },
+      {
+        title: 'Hội thoại hết hạn trả lời',
+        problem: 'Khi hội thoại đã hết hạn, tin nhắn nhân viên gửi đi sẽ không đến được khách.',
+        solution: 'Theo dõi trạng thái hết hạn của từng hội thoại và tự khóa ô nhập khi hội thoại hết hạn.',
+      },
+    ],
+    full_description: `
+## Tổng quan
+OmniChat là module hộp thư đa kênh của InnoERP. Tin nhắn khách hàng từ website, Zalo OA, Facebook, Instagram, Shopee, Lazada và TikTok Shop được gom về một hộp thư trong ERP.
+Trước đó nhân viên chăm sóc khách hàng phải trực nhiều ứng dụng chat riêng lẻ, và muốn xem đơn hàng của khách thì phải mở ERP ở chỗ khác.
+
+## Vai trò & đóng góp
+Team lead phụ trách kiến trúc module, kết nối các nền tảng và phần trả lời tự động. Phần tôi làm là giao diện cho nhân viên và API lịch sử đơn hàng:
+- **Danh sách hội thoại:** bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày; chuyển truy vấn hội thoại sang một API hợp nhất phía server.
+- **Khung chat:** ô nhập có đính kèm file, emoji và gợi ý câu trả lời; hiển thị tin nhắn ảnh và file; tự khóa ô nhập khi hội thoại đã hết hạn.
+- **Lịch sử đơn hàng trong khung chat:** panel đơn hàng và modal chi tiết đơn cập nhật realtime, cùng API Python get_order_history.
+- **Bật/tắt trả lời tự động theo kênh:** công tắc trên giao diện và cờ cấu hình tương ứng phía backend.
+- **Phiên bản đầu tiên:** khung chat, polling tin nhắn, cấu hình kênh và bản địa hóa tiếng Việt.
+
+## Kiến trúc
+- Giao diện React bundle bằng Vite, nhúng vào một page của Frappe; state bằng Zustand, dữ liệu bằng TanStack Query, realtime qua socket của Frappe.
+- Backend gồm các DocType hội thoại, tin nhắn, liên hệ và nền tảng trong ERPNext, cùng webhook và background job gửi tin cho từng nền tảng.
 `,
   },
   {
