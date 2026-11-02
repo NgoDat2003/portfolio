@@ -32,7 +32,7 @@ export default function About() {
         >
           <div className="space-y-6 text-base leading-relaxed text-ink-soft md:text-lg">
             <p>
-              Tôi là <strong className="font-semibold text-ink">Ngô Quốc Đạt</strong>, Fullstack Web Developer có kinh nghiệm thực chiến trong phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình vận hành chuỗi bán lẻ F&B (<span className="marker-highlight font-semibold text-ink">300+ cửa hàng</span>).
+              Tôi là <strong className="font-semibold text-ink">Ngô Quốc Đạt</strong>, Fullstack Web Developer có kinh nghiệm thực chiến trong phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình vận hành chuỗi bán lẻ F&B (<span className="marker-highlight font-semibold text-ink">200+ cửa hàng</span>).
             </p>
             <p>
               Thế mạnh cốt lõi là thiết kế kiến trúc Monorepo (Turborepo), Contract-First API, phân quyền doanh nghiệp (Microsoft Entra ID / Azure AD SSO, Cookie-based JWT Token Rotation), mô phỏng tài chính (Dry-run addendum engine, Period-locking) và tự động hóa giám sát dữ liệu bán lẻ (iPOS → SAP Business One).

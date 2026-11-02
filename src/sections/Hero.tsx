@@ -31,7 +31,7 @@ export default function Hero() {
               <h1 className="mt-3 font-extrabold tracking-tight text-ink">
                 <span className="marker-highlight text-4xl leading-[1.15] sm:text-5xl lg:text-[3.4rem]">Fullstack Web Developer</span>
                 <span className="mt-3 block text-2xl leading-snug text-ink-soft sm:text-3xl lg:text-[2.1rem]">
-                  xây hệ thống vận hành cho chuỗi 300+ cửa hàng
+                  xây hệ thống vận hành cho chuỗi 200+ cửa hàng
                 </span>
               </h1>
               <p className="mt-5 text-base font-medium text-muted md:text-lg">
@@ -40,7 +40,7 @@ export default function Hero() {
             </motion.div>
   
             <motion.p {...fadeUp(0.1)} className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
-              Kỹ sư Fullstack Web với kinh nghiệm thực chiến phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình chuỗi F&B 300+ cửa hàng. Chuyên sâu Turborepo, Next.js 15, NestJS, Azure AD SSO và tự động hóa n8n.
+              Kỹ sư Fullstack Web với kinh nghiệm thực chiến phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình chuỗi F&B 200+ cửa hàng. Chuyên sâu Turborepo, Next.js 15, NestJS, Azure AD SSO và tự động hóa n8n.
             </motion.p>
   
             <motion.div {...fadeUp(0.2)} className="mt-8 flex flex-wrap gap-3">

@@ -36,15 +36,15 @@ export const projects: Project[] = [
     id: 'ttvh-portal',
     title: 'Enterprise Operations Web Portal',
     category: 'Enterprise Monorepo / Operations Portal',
-    timeline: '04/2026 - Present',
-    desc: 'Hệ thống Cổng thông tin điều hành doanh nghiệp tập trung hóa cho chuỗi bán lẻ F&B quy mô 300+ cửa hàng, tích hợp xác thực Microsoft Entra ID (Azure AD SSO) và kiến trúc Monorepo Turborepo.',
+    timeline: '04/2026 - 11/2026',
+    desc: 'Hệ thống Cổng thông tin điều hành doanh nghiệp tập trung hóa cho chuỗi bán lẻ F&B quy mô 200+ cửa hàng, tích hợp xác thực Microsoft Entra ID (Azure AD SSO) và kiến trúc Monorepo Turborepo.',
     tech_detail: 'Turborepo Monorepo (Next.js 15 App Router, React 19, NestJS 10, PostgreSQL 16, Prisma 7, Microsoft Entra ID MSAL, Orval OpenAPI codegen, Base UI, Tailwind v4).',
     deploy_note: 'Hệ thống mạng nội bộ doanh nghiệp. Portfolio trình bày sơ đồ kiến trúc hệ thống và giải pháp kỹ thuật đã khử định danh IP doanh nghiệp.',
     achievements: [
       'Xây dựng kiến trúc Monorepo đồng bộ hóa types giữa Next.js 15 và NestJS 10 thông qua Contract-First OpenAPI và Orval codegen.',
       'Thiết lập xác thực Microsoft Entra ID (Azure AD SSO) qua MSAL với ranh giới assignment-required bảo mật.',
       'Thiết kế cơ chế Cookie-based JWT có tính năng Token Rotation nguyên tử và Replay Detection nhằm triệt tiêu rủi ro chiếm đoạt token.',
-      'Tích hợp module điều phối yêu cầu vận hành cho chuỗi 300+ cửa hàng trên toàn quốc và phân hệ giám sát đối soát SAP B1.',
+      'Tích hợp module điều phối yêu cầu vận hành cho chuỗi 200+ cửa hàng trên toàn quốc và phân hệ giám sát đối soát SAP B1.',
     ],
     tech: ['Next.js 15', 'NestJS 10', 'Turborepo', 'PostgreSQL', 'Azure AD SSO', 'Orval', 'Prisma'],
     github: '#',
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     images: ['/assets/diagrams/ttvh-portal-architecture.svg'],
     full_description: `
 ## Tổng quan kiến trúc
-Enterprise Operations Web Portal là cổng điều hành tập trung kết nối ban giám đốc, khối hỗ trợ văn phòng và chuỗi 300+ cửa hàng F&B trên toàn quốc. Nền tảng hợp nhất quyền truy cập tất cả hệ thống phân tán, cung cấp app launcher, điều phối yêu cầu vận hành và tích hợp báo cáo đối soát dữ liệu với SAP Business One.
+Enterprise Operations Web Portal là cổng điều hành tập trung kết nối ban giám đốc, khối hỗ trợ văn phòng và chuỗi 200+ cửa hàng F&B trên toàn quốc. Nền tảng hợp nhất quyền truy cập tất cả hệ thống phân tán, cung cấp app launcher, điều phối yêu cầu vận hành và tích hợp báo cáo đối soát dữ liệu với SAP Business One.
 
 ## Vai trò & Trách nhiệm kỹ thuật
 - Thiết lập cấu trúc Monorepo bằng Turborepo và pnpm workspaces cho toàn bộ frontend và backend.
@@ -71,7 +71,7 @@ Enterprise Operations Web Portal là cổng điều hành tập trung kết nố
     id: 'store-lease-management',
     title: 'Store Lease Management Platform',
     category: 'Full-stack Platform / Enterprise Real Estate',
-    timeline: '04/2026 - Present',
+    timeline: '04/2026 - 11/2026',
     desc: 'Nền tảng số hóa quản lý 100+ hợp đồng thuê mặt bằng chuỗi cửa hàng, thay thế hoàn toàn Excel; tích hợp Addendum Engine mô phỏng chi phí trước (Dry-run) và cơ chế chốt kỳ (Period-locking).',
     tech_detail: 'Next.js 15, NestJS, Prisma ORM, PostgreSQL, Tailwind CSS, Interactive HTML/JS Prototype, OCR Ingestion Assistant, SAP B1 Export Staging.',
     deploy_note: 'Dự án doanh nghiệp kết hợp bộ demo tương tác công khai đã được khử định danh dữ liệu mặt bằng.',
@@ -104,7 +104,7 @@ Quản lý hợp đồng thuê mặt bằng bán lẻ tại các chuỗi F&B đ�
     id: 'qaqc-platform',
     title: 'QualityOps QA/QC Audit Platform',
     category: 'Full-stack Platform / Quality Assurance',
-    timeline: '05/2026 - Present',
+    timeline: '05/2026 - 11/2026',
     desc: 'Hệ thống quản lý quy trình audit QA/QC toàn diện cho chuỗi bán lẻ: lập kế hoạch thanh tra, QC chấm điểm checklist tại cửa hàng, upload bằng chứng, tính điểm tự động và vòng đời Action Plan.',
     tech_detail: 'Next.js 15, React, TypeScript, TanStack Query, Tailwind CSS, Prisma ORM, PostgreSQL, JWT/RBAC, Playwright E2E automated test harness.',
     deploy_note: 'Có live demo web app, portal tài liệu hướng dẫn và video kiểm thử E2E Playwright tự động.',
@@ -140,7 +140,7 @@ QualityOps là nền tảng quản trị chất lượng vận hành (QA/QC) đ�
     id: 'thuccoffee-inhouse',
     title: 'Thức Coffee 24/7 Brand Web & Admin CMS',
     category: 'Full-stack Modernization / In-housing CMS',
-    timeline: '04/2026 - Present',
+    timeline: '04/2026 - 11/2026',
     desc: 'Dự án nội bộ hóa toàn diện hệ thống website thương hiệu và cổng CMS quản trị cho chuỗi cà phê Thức Coffee 24/7; thực hiện di chuyển dữ liệu (Data Migration) với độ toàn vẹn cao.',
     tech_detail: 'React 19, Express 5, Drizzle ORM, PostgreSQL 16, MinIO Object Storage, Tailwind CSS v4, Tiptap Editor, Docker Compose.',
     deploy_note: 'Mã nguồn Fullstack đầy đủ cùng bộ test di chuyển dữ liệu được công khai trên GitHub.',
@@ -171,7 +171,7 @@ Nhằm chủ động kiểm soát tài sản kỹ thuật số và cắt giảm 
     id: 'sap-pos-monitor',
     title: 'Retail POS to SAP B1 Automation & Monitor',
     category: 'System Integration / Data Automation',
-    timeline: '04/2026 - Present',
+    timeline: '04/2026 - 11/2026',
     desc: 'Giải pháp tự động hóa giám sát và đối soát luồng dữ liệu bán hàng từ chuỗi POS qua cơ sở dữ liệu trung gian vào ERP SAP Business One; xây dựng workflow cảnh báo tức thì bằng n8n.',
     tech_detail: 'n8n Automation Engine, Microsoft SQL Server, PostgreSQL, SAP Business One SDK/Service Layer, Webhook Notifications.',
     deploy_note: 'Hệ thống hạ tầng dữ liệu nội bộ. Trình bày dưới dạng sơ đồ luồng dữ liệu (Data Pipeline Architecture) và giải pháp kỹ thuật.',
@@ -188,7 +188,7 @@ Nhằm chủ động kiểm soát tài sản kỹ thuật số và cắt giảm 
     images: ['/assets/diagrams/sap-reconcile-architecture.svg'],
     full_description: `
 ## Bối cảnh bài toán
-Trong môi trường chuỗi F&B tốc độ cao với hàng chục nghìn giao dịch mỗi ngày trên 300+ cửa hàng, việc đồng bộ dữ liệu từ phần mềm bán hàng iPOS vào hệ thống ERP SAP Business One thường xảy ra nguy cơ gián đoạn do lỗi mạng, nghẽn hàng đợi hoặc sai lệch danh mục hàng hóa.
+Trong môi trường chuỗi F&B tốc độ cao với hàng chục nghìn giao dịch mỗi ngày trên 200+ cửa hàng, việc đồng bộ dữ liệu từ phần mềm bán hàng iPOS vào hệ thống ERP SAP Business One thường xảy ra nguy cơ gián đoạn do lỗi mạng, nghẽn hàng đợi hoặc sai lệch danh mục hàng hóa.
 
 ## Kiến trúc tự động hóa
 - **Database Trung Gian (Staging DB):** Nơi tiếp nhận hóa đơn thô từ các điểm bán, đóng vai trò đệm giảm tải trực tiếp cho core SAP B1.

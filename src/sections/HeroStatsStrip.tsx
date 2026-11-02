@@ -2,7 +2,7 @@ import { projects } from '../data/projects'
 
 // Every figure here comes from content already published in projects.ts / Experience.tsx.
 const STATS = [
-  { value: '300+', label: 'cửa hàng F&B kết nối qua Web Portal' },
+  { value: '200+', label: 'cửa hàng F&B kết nối qua Web Portal' },
   { value: '100+', label: 'hợp đồng thuê mặt bằng được số hóa' },
   { value: `${projects.length}`, label: 'dự án tiêu biểu trong portfolio' },
   { value: 'iPOS → SAP B1', label: 'luồng đối soát tự động bằng n8n' },
