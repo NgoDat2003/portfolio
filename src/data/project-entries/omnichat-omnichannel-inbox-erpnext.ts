@@ -20,7 +20,7 @@ export const omnichatProject: Project = {
     {
       title: 'Xem đơn hàng ngay khi đang chat',
       problem: 'Muốn tư vấn hay xử lý khiếu nại, nhân viên phải rời hộp thư và mở ERP ở chỗ khác để tra đơn của khách.',
-      solution: 'Thêm panel lịch sử đơn và modal chi tiết đơn ngay cạnh hội thoại, lấy dữ liệu qua API get_order_history viết riêng cho màn hình này và cập nhật realtime.',
+      solution: 'Thêm panel lịch sử đơn và modal chi tiết đơn ngay cạnh hội thoại, lấy dữ liệu qua một API lịch sử đơn hàng viết riêng cho màn hình này và cập nhật realtime.',
     },
     {
       title: 'Hộp thư lẫn hội thoại cũ',
@@ -42,7 +42,7 @@ Trước đó nhân viên chăm sóc khách hàng phải trực nhiều ứng d�
 Team lead phụ trách kiến trúc module, kết nối các nền tảng và phần trả lời tự động. Phần tôi làm là giao diện cho nhân viên và API lịch sử đơn hàng:
 - **Danh sách hội thoại:** bộ lọc khách không tương tác trong 14, 30 hoặc 60 ngày; chuyển danh sách hội thoại sang gọi API truy vấn hợp nhất phía server.
 - **Khung chat:** ô nhập có đính kèm file và emoji; hiển thị tin nhắn ảnh và file; tự khóa ô nhập khi hội thoại đã hết hạn.
-- **Lịch sử đơn hàng trong khung chat:** panel đơn hàng và modal chi tiết đơn cập nhật realtime, cùng API Python get_order_history.
+- **Lịch sử đơn hàng trong khung chat:** panel đơn hàng và modal chi tiết đơn cập nhật realtime, cùng API Python lấy lịch sử đơn hàng.
 - **Bật/tắt trả lời tự động theo kênh:** công tắc trên giao diện và cờ cấu hình tương ứng phía backend.
 - **Phiên bản đầu tiên:** khung chat, polling tin nhắn, cấu hình kênh và bản địa hóa tiếng Việt.
 

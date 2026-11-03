@@ -49,8 +49,6 @@ App QA/QC là hệ thống audit chất lượng cửa hàng của tập đoàn,
 ## Kiến trúc
 - Monorepo pnpm + Turborepo: web Next.js 16 (Ant Design 6, TanStack Query 5, Orval) và API NestJS 11 (Mongoose 8, MongoDB); ảnh bằng chứng lưu trên MinIO.
 - Trong sơ đồ, ô nền vàng viền cam là phần tôi làm; ô nét đứt là phần của team hoặc nền tảng.
-
-## Tài liệu
-- Web hướng dẫn sử dụng hệ thống QA/QC: [qaqc-userguide-maycha.vercel.app](https://qaqc-userguide-maycha.vercel.app)
+- Hệ thống nội bộ của công ty nên portfolio chỉ mô tả, không kèm mã nguồn hay tài liệu nội bộ.
 `,
 };

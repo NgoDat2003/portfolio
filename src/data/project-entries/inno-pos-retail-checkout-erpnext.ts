@@ -44,7 +44,7 @@ POS mặc định của ERPNext không đáp ứng nghiệp vụ bán lẻ Việ
 - **Trả hàng & hoàn tiền:** tiền hoàn được phân bổ ngược về đúng phương thức khách đã trả.
 - **Nghiệp vụ cửa hàng:** phiếu sửa chữa, giao nhanh, nhiều đơn vị tính, xem tồn kho ở chi nhánh khác.
 - **Chọn khách hàng bằng khuôn mặt:** tích hợp màn hình chọn khách từ kết quả nhận diện khuôn mặt của API có sẵn; phần nhận diện không do tôi làm.
-- **API Python cho POS:** viết search_pos_invoices và get_pos_invoice_total_payment để tìm hóa đơn và tổng hợp tiền thu; thêm API tổng hợp tồn kho và doanh số theo chi nhánh.
+- **API Python cho POS:** viết API tìm hóa đơn POS và API tổng hợp tiền thu; thêm API tổng hợp tồn kho và doanh số theo chi nhánh.
 - **Mẫu in & bản địa hóa:** mẫu in hóa đơn POS và phiếu sửa chữa; bản dịch tiếng Việt cho các màn hình mới.
 
 ## Kiến trúc

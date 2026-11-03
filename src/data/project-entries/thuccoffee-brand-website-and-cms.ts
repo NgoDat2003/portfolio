@@ -13,7 +13,7 @@ export const thucCoffeeProject: Project = {
   team: 'Tôi viết code frontend, backend và script chuyển dữ liệu',
   desc: 'Làm lại website thương hiệu Thức Coffee và trang quản trị nội dung, thay cho website cũ viết bằng ASP.NET: chuyển 267 bài viết, 42 sản phẩm, 7 cửa hàng và 498 ảnh sang hệ thống mới.',
   tech: ['React 19', 'Express 5', 'Drizzle ORM', 'PostgreSQL 16', 'MinIO', 'Tiptap 3', 'Docker'],
-  github: 'https://github.com/NgoDat2003/thuccoffee',
+  github: '#',
   demo: '#',
   image: '/assets/diagrams/thuccoffee-architecture.svg',
   cover: '/assets/screenshots/thuccoffee-website.jpg',
@@ -48,9 +48,7 @@ Website cũ của Thức Coffee viết bằng ASP.NET MVC chạy trên IIS. Tôi
 - Frontend React 19 + Vite + Tailwind 4 + React Router 7, TanStack Query cho trang admin.
 - Backend Express 5 + Drizzle ORM trên PostgreSQL 16, ảnh lưu trên MinIO, Nginx phục vụ frontend, API và ảnh.
 - Trong sơ đồ, ô nền vàng viền cam là phần tôi làm; ô nét đứt là hệ thống cũ hoặc dịch vụ bên ngoài.
-
-## Mã nguồn
-- [github.com/NgoDat2003/thuccoffee](https://github.com/NgoDat2003/thuccoffee)
+- Dự án của công ty nên portfolio chỉ mô tả, không kèm mã nguồn.
 
 ![Trang chủ website Thức Coffee mới](/assets/screenshots/thuccoffee-website.jpg)
 `,
