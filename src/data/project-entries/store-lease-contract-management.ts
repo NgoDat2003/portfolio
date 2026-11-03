@@ -13,10 +13,10 @@ export const storeLeaseManagementProject: Project = {
   team: 'Tôi viết toàn bộ code trong repo; OCR gọi một service có sẵn bên ngoài',
   desc: 'Hệ thống quản lý vòng đời hợp đồng thuê mặt bằng của chuỗi cửa hàng, đang quản lý 100+ hợp đồng: hồ sơ, phụ lục điều chỉnh giá có chạy thử (dry-run), thanh lý, lịch thanh toán và file bút toán Journal Entry cho SAP B1 không trùng kỳ.',
   tech: ['Next.js 15', 'NestJS 10', 'Prisma 7', 'PostgreSQL 16', 'TanStack Query', 'ExcelJS', 'MinIO', 'Docker'],
-  github: 'https://github.com/NgoDat2003/quan-ly-hop-dong',
-  demo: 'https://ngodat2003.github.io/quan-ly-hop-dong/',
+  github: '#',
+  demo: '#',
   image: '/assets/diagrams/lease-management-architecture.svg',
-  cover: '/assets/screenshots/qlhd-demo-dashboard.jpg',
+  cover: '/assets/diagrams/lease-management-cover.svg',
   challenges: [
     {
       title: 'Sửa điều khoản của kỳ đã chi hoặc đã xuất SAP',
@@ -51,11 +51,6 @@ Người dùng gồm Admin, Kế toán và bộ phận mặt bằng (Site), mỗ
 ## Kiến trúc
 - Monorepo pnpm + Turborepo: web Next.js 15 (React 19, TanStack Query 5, Zustand) và API NestJS 10 (Prisma 7, PostgreSQL 16, ExcelJS), chạy bằng Docker Compose.
 - Trong sơ đồ, ô nền vàng viền cam là phần tôi làm; ô nét đứt là nền tảng hoặc service bên ngoài.
-
-## Demo & tài liệu
-- Repo GitHub là bản prototype giao diện HTML/JS tĩnh dùng dữ liệu giả: [ngodat2003.github.io/quan-ly-hop-dong](https://ngodat2003.github.io/quan-ly-hop-dong/)
-- Web hướng dẫn sử dụng 10 chương: [qlhd-user-guide.vercel.app](https://qlhd-user-guide.vercel.app)
-
-![Dashboard của bản demo tĩnh, dữ liệu giả](/assets/screenshots/qlhd-demo-dashboard.jpg)
+- Hệ thống nội bộ của công ty nên portfolio chỉ mô tả nghiệp vụ, phần đóng góp và sơ đồ kiến trúc, không kèm mã nguồn.
 `,
 };
