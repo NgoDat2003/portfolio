@@ -58,10 +58,13 @@ export function renderProjectMarkdown(markdown: string): ReactNode[] {
 
       if (value.startsWith('![')) {
         const match = value.match(/!\[(.*?)\]\((.*?)\)/);
-        if (!match) return null;
+        // Only local assets or https images; anything else (e.g. javascript:) is dropped.
+        if (!match || !/^(\/assets\/|https:\/\/)/.test(match[2])) return null;
         return (
           <figure key={index} className="my-10 overflow-hidden rounded-2xl border-2 border-ink bg-card shadow-sketch-sm">
-            <img src={match[2]} alt={match[1]} className="w-full object-cover" />
+            <a href={match[2]} target="_blank" rel="noopener noreferrer">
+              <img src={match[2]} alt={match[1]} loading="lazy" className="h-auto w-full" />
+            </a>
             <figcaption className="border-t-2 border-ink px-5 py-3 font-hand text-lg text-ink-soft">
               {match[1]}
             </figcaption>

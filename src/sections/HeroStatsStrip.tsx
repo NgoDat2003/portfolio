@@ -1,11 +1,11 @@
 import { projects } from '../data/projects'
 
-// Every figure here comes from content already published in projects.ts / Experience.tsx.
+// Every figure here is also stated on a project page (src/data/project-entries) or in Experience.tsx.
 const STATS = [
-  { value: '200+', label: 'cửa hàng F&B kết nối qua Web Portal' },
-  { value: '100+', label: 'hợp đồng thuê mặt bằng được số hóa' },
-  { value: `${projects.length}`, label: 'dự án tiêu biểu trong portfolio' },
-  { value: 'iPOS → SAP B1', label: 'luồng đối soát tự động bằng n8n' },
+  { value: '200+', label: 'cửa hàng thuộc tập đoàn F&B nơi tôi làm hệ thống nội bộ' },
+  { value: '100+', label: 'hợp đồng thuê mặt bằng trên hệ thống QLHD tôi phát triển chính' },
+  { value: `${projects.length}`, label: 'dự án có trang chi tiết trong portfolio' },
+  { value: '1-2 giờ/ngày', label: 'ước tính tiết kiệm khi rà soát chứng từ SAP với Master Board' },
 ]
 
 /** Bordered band of key numbers shown right under the hero. */

@@ -3,18 +3,20 @@ import SectionTitle from '../components/shared/SectionTitle'
 
 const SKILLS = [
   'TypeScript',
-  'Next.js 15',
   'React 18/19',
-  'NestJS 10',
+  'Next.js',
+  'NestJS',
   'Node.js / Express',
+  'Python (Frappe / ERPNext)',
   'PostgreSQL',
-  'Prisma / Drizzle ORM',
+  'MongoDB',
+  'SQL Server',
+  'Prisma / Drizzle / Mongoose',
   'Turborepo',
-  'Azure AD SSO (MSAL)',
+  'Microsoft Entra ID (MSAL)',
   'TanStack Query',
   'Tailwind CSS',
-  'Playwright E2E',
-  'n8n Automation',
+  'Playwright',
   'Docker',
 ]
 
@@ -22,7 +24,7 @@ export default function About() {
   return (
     <section id="about" className="px-4 py-20 md:px-8 md:py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle title="Về tôi" subtitle="Fullstack, Web Portal & số hóa vận hành" />
+        <SectionTitle title="Về tôi" subtitle="Fullstack cho hệ thống nội bộ" />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,13 +34,13 @@ export default function About() {
         >
           <div className="space-y-6 text-base leading-relaxed text-ink-soft md:text-lg">
             <p>
-              Tôi là <strong className="font-semibold text-ink">Ngô Quốc Đạt</strong>, Fullstack Web Developer có kinh nghiệm thực chiến trong phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình vận hành chuỗi bán lẻ F&B (<span className="marker-highlight font-semibold text-ink">200+ cửa hàng</span>).
+              Tôi là <strong className="font-semibold text-ink">Ngô Quốc Đạt</strong>, Fullstack Web Developer. Từ 04/2026 tôi làm hệ thống nội bộ cho một tập đoàn F&B có <span className="marker-highlight font-semibold text-ink">200+ cửa hàng</span>. Các hệ thống tôi làm gồm portal đăng nhập một lần, theo dõi chứng từ SAP, quản lý hợp đồng thuê mặt bằng và website thương hiệu.
             </p>
             <p>
-              Thế mạnh cốt lõi là thiết kế kiến trúc Monorepo (Turborepo), Contract-First API, phân quyền doanh nghiệp (Microsoft Entra ID / Azure AD SSO, Cookie-based JWT Token Rotation), mô phỏng tài chính (Dry-run addendum engine, Period-locking) và tự động hóa giám sát dữ liệu bán lẻ (iPOS → SAP Business One).
+              Phần tôi làm nhiều nhất là API NestJS và màn hình Next.js cho các nghiệp vụ này: đăng nhập Microsoft Entra ID, phiên cookie có xoay vòng token, phân quyền theo role, lịch thanh toán có khóa kỳ và file bút toán cho SAP. Trước đó, tại TADALABS (03/2025 - 03/2026), tôi là thành viên chính của module Inno POS và đóng góp giao diện hộp thư OmniChat trên ERPNext.
             </p>
             <p>
-              Tôi tập trung vào tính toàn vẹn dữ liệu, hiệu năng hệ thống và trải nghiệm vận hành trơn tru giữa các phòng ban khối văn phòng và chuỗi cửa hàng.
+              Tôi thích ngồi với người dùng ở các phòng ban để hiểu nghiệp vụ trước khi viết code, và ưu tiên để số liệu khớp nhau giữa các hệ thống.
             </p>
           </div>
 

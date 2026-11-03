@@ -7,14 +7,14 @@ const experiences = [
     company: 'TẬP ĐOÀN THỊNH THẾ VINH HOA',
     period: '04/2026 - Hiện tại',
     summary:
-      'Tập đoàn F&B vận hành chuỗi 200+ cửa hàng (MayCha, Tam Hảo, Thức Coffee, Trà Hú, Gà Giòn Sốt). Phát triển các hệ thống quản trị nội bộ: quản lý hợp đồng thuê mặt bằng, kiểm toán chất lượng QA/QC, website thương hiệu và giám sát dữ liệu SAP B1.',
-    focus: 'Phân tích nghiệp vụ cùng người dùng, thiết kế hệ thống, REST API với NestJS, dashboard và tự động hóa đối soát dữ liệu bằng n8n.',
+      'Tập đoàn F&B vận hành chuỗi 200+ cửa hàng (MayCha, Tam Hảo, Thức Coffee, Trà Hú, Gà Giòn Sốt). Tôi làm portal nội bộ kèm Master Board theo dõi chứng từ SAP, hệ thống quản lý hợp đồng thuê mặt bằng, website Thức Coffee, và đóng góp app audit QA/QC của team.',
+    focus: 'API NestJS và màn hình Next.js cho nghiệp vụ nội bộ, đăng nhập và phân quyền, đọc dữ liệu SAP, xuất file bút toán cho SAP B1.',
     bullets: [
-      'Quản lý hợp đồng thuê mặt bằng (Next.js, NestJS, Prisma, PostgreSQL): Thiết kế và phát triển toàn bộ hệ thống quản lý vòng đời 100+ hợp đồng, từ ký mới, phụ lục đến thanh lý, giúp kế toán xuất bút toán sang SAP B1 đúng kỳ và không trùng lặp.',
-      'Kiểm toán chất lượng QA/QC: Phát triển Dashboard theo dõi điểm chất lượng, chức năng tính phí QC và xuất bảng lương cho hệ thống kiểm toán chất lượng của 200+ cửa hàng.',
-      'Giám sát dữ liệu SAP B1 (n8n): Tự động đối soát doanh thu hằng ngày từ iPOS qua 6 DB trung gian và phát hiện chứng từ bị kẹt trong quy trình mua bán, giúp kế toán tiết kiệm 1-2 giờ/ngày.',
-      'Website & CMS Thức Coffee (React 19, Express, Drizzle ORM, PostgreSQL): Xây dựng website thương hiệu và trang quản trị nội dung, thay thế hệ thống cũ.',
-      'Phân tích nghiệp vụ: Thu thập yêu cầu từ người dùng ở các phòng ban (Pháp chế, Kế toán, QA/QC, Vận hành), từ đó lựa chọn công nghệ và thiết kế hệ thống phù hợp.',
+      'Portal nội bộ & Master Board SAP (Next.js 15, NestJS 10, Entra ID): Đăng nhập một lần bằng tài khoản Microsoft, phiên cookie xoay vòng refresh token, phân quyền 9 quyền. Master Board theo dõi chứng từ bán và trả hàng trong SAP với studio 25 câu truy vấn có version; theo ước tính giúp tiết kiệm 1-2 giờ/ngày rà soát chứng từ.',
+      'Quản lý hợp đồng thuê mặt bằng (Next.js 15, NestJS 10, Prisma, PostgreSQL): Người viết code chính của hệ thống đang quản lý 100+ hợp đồng; phụ lục chạy thử trước khi ghi, khóa các kỳ đã chi, file bút toán Journal Entry theo template DTW để kế toán nhập vào SAP B1, không xuất trùng kỳ.',
+      'App audit QA/QC (Next.js 16, NestJS 11, MongoDB): Đóng góp vào app của team gồm bộ lọc nhiều brand trên dashboard, bổ sung điểm hàng loạt, phí QC theo cửa hàng và xuất bảng payroll 3P.',
+      'Website & CMS Thức Coffee (React 19, Express 5, Drizzle ORM, PostgreSQL): Làm lại website thương hiệu và trang quản trị thay cho website ASP.NET cũ, chuyển 267 bài viết, 42 sản phẩm và 498 ảnh sang hệ thống mới.',
+      'Vận hành đồng bộ dữ liệu: Phụ trách kiểm tra trạng thái đồng bộ chứng từ sang SAP hằng ngày theo playbook.',
     ],
   },
   {
@@ -22,14 +22,13 @@ const experiences = [
     company: 'TADALABS - InnoERP',
     period: '03/2025 - 03/2026',
     summary:
-      'Công ty phần mềm ERP/POS cho chuỗi bán lẻ. Tham gia phát triển InnoERP, nền tảng ERP trên Frappe/ERPNext: frontend React cho màn hình bán hàng Inno POS và hệ thống chat đa kênh OmniChat, kèm API Python cho các màn hình này.',
-    focus: 'Luồng thanh toán và khuyến mãi POS, form nghiệp vụ, API Python trên ERPNext và giao diện chat đa kênh.',
+      'Công ty phần mềm ERP/POS cho chuỗi bán lẻ. Tôi tham gia phát triển InnoERP trên Frappe/ERPNext: thành viên chính của module Inno POS và đóng góp giao diện hộp thư OmniChat, kèm API Python cho các màn hình này.',
+    focus: 'Thanh toán và khuyến mãi POS, API Python trên ERPNext, giao diện hộp thư OmniChat.',
     bullets: [
-      'Inno POS (React, TypeScript, Zustand, TanStack Query): Trực tiếp xây dựng phân hệ bán hàng tại quầy, giúp thu ngân xử lý nhiều hóa đơn cùng lúc và tra cứu tồn kho của các chi nhánh khác.',
-      'Khuyến mãi & thanh toán: Phụ trách khuyến mãi 3 tầng (theo món, theo hóa đơn, coupon), thanh toán nhiều đợt qua VietQR và hoàn tiền khi đổi trả hàng.',
-      'OmniChat (React, Zustand, Socket.IO): Phát triển hệ thống chat đa kênh giúp nhân viên chăm sóc khách hàng trả lời tin nhắn từ Shopee, Lazada, TikTok Shop, Facebook, Zalo OA trên cùng một màn hình.',
+      'Inno POS (React, TypeScript, Zustand, TanStack Query): Thành viên chính module POS; làm giỏ hàng, phiếu sửa chữa, giao nhanh, nhiều đơn vị tính và màn hình xem tồn kho chi nhánh khác.',
+      'Khuyến mãi & thanh toán: Khuyến mãi 3 tầng (theo sản phẩm, theo hóa đơn, coupon), chia nhiều phương thức thanh toán cho một hóa đơn kèm VietQR, và hoàn tiền về đúng các phương thức khách đã trả.',
+      'OmniChat (React, Zustand, Socket.IO): Đóng góp giao diện hộp thư đa kênh, là 1 trong 3 người làm giao diện chính; làm bộ lọc khách không tương tác, khung chat tự khóa khi hội thoại hết hạn và panel lịch sử đơn hàng kèm API riêng.',
       'API Python trên ERPNext: Viết API tìm hóa đơn POS và tổng hợp tiền thu theo phương thức, tài khoản ngân hàng, quầy và loại đơn; API tổng hợp tồn kho và doanh số theo chi nhánh.',
-      'Form nghiệp vụ (React Hook Form, Zod): Xây dựng form có validation dùng lại giữa nhiều màn hình POS.',
     ],
   },
 ]

@@ -35,7 +35,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
         <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-soft">{kind}</span>
-        <StatusBadge status={getProjectStatus(project.timeline)} />
+        <StatusBadge status={getProjectStatus(project)} />
       </div>
       <p className="mt-1.5 text-[11px] font-medium uppercase tracking-[0.12em] text-muted">
         {domain && `${domain} · `}{project.timeline}
@@ -43,12 +43,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
       <Link
         to={detailPath}
-        className="mt-5 block aspect-[16/9] overflow-hidden rounded-xl border-2 border-ink bg-ink"
+        className="mt-5 block aspect-[16/9] overflow-hidden rounded-xl border-2 border-ink bg-card"
         aria-label={`Xem chi tiết ${project.title}`}
         tabIndex={-1}
       >
         <img
-          src={project.image}
+          src={project.cover ?? project.image}
           alt=""
           loading="lazy"
           className="h-full w-full object-cover object-top transition-transform duration-500 hover:scale-[1.03]"
