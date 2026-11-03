@@ -1,135 +1,100 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%" role="img" aria-labelledby="t d">
+  <title id="t">Store Lease Management architecture</title>
+  <desc id="d">Admin, accounting and site users work in a Next.js 15 web app with the addendum workspace, termination drawer, OCR scan intake and cash-flow console. It talks to a NestJS 10 API with the addendum engine and dry-run, payment anchor lock, schedules and proration, SAP journal entry export without duplicates, master data import with diff preview, audit log and expiry alerts. Data lives in PostgreSQL 16 with Prisma 7 and PDFs in MinIO; an external OCR service reads scans, and journal entry files are imported into SAP Business One manually. Highlighted boxes are my work; dashed boxes are platform or external systems.</desc>
+  <style>
+    text { font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif; fill: #2A231F; }
+    .h { font-size: 17px; font-weight: 700; }
+    .sub { font-size: 12px; fill: #736860; }
+    .tile { font-size: 13px; font-weight: 600; }
+    .small { font-size: 12px; }
+    .mine { fill: #F8EBB5; stroke: #D9654B; stroke-width: 2.5; }
+    .team { fill: none; stroke: #736860; stroke-width: 1.5; stroke-dasharray: 6 5; }
+    .panel { fill: #FFFCF7; stroke: #2A231F; stroke-width: 2; }
+    .chip { fill: #D8E6EF; stroke: #2A231F; stroke-width: 1.5; }
+    .shadow { fill: #2A231F; }
+    .arrow { stroke: #2A231F; stroke-width: 2; fill: none; marker-end: url(#head); }
+  </style>
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0d14"/>
-      <stop offset="100%" stop-color="#0f172a"/>
-    </linearGradient>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
-    </filter>
+    <marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2A231F"/>
+    </marker>
   </defs>
 
-  <rect width="960" height="540" rx="16" fill="url(#bg)"/>
-  <rect x="1" y="1" width="958" height="538" rx="15" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect width="960" height="540" fill="#FAF4EA"/>
 
-  <!-- Header -->
-  <text x="480" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#f8fafc" text-anchor="middle" letter-spacing="1">
-    STORE LEASE MANAGEMENT &amp; DRY-RUN ADDENDUM ENGINE
-  </text>
-  <text x="480" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#94a3b8" text-anchor="middle">
-    Digitizing 100+ Leases • Period-Locking Immutability • Financial Simulation Before SAP B1 Export
-  </text>
+  <text x="40" y="58" style="font-size:28px;font-weight:800">Store Lease Management</text>
+  <text x="40" y="82" class="sub" style="font-size:14px">Lease contracts to SAP journal entries · architecture</text>
 
-  <!-- Step 1: Lease Digitization & Ingestion -->
-  <g transform="translate(40, 100)" filter="url(#shadow)">
-    <rect width="260" height="390" rx="12" fill="#111827" stroke="#334155" stroke-width="1.5"/>
-    <rect x="0" y="0" width="260" height="42" rx="12" fill="#1e293b"/>
-    <text x="130" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#38bdf8" text-anchor="middle">
-      1. LEASE INGESTION &amp; OCR
-    </text>
+  <!-- Legend -->
+  <rect x="612" y="40" width="16" height="16" rx="3" class="mine"/>
+  <text x="636" y="53" class="small">my work</text>
+  <rect x="718" y="40" width="16" height="16" rx="3" class="team"/>
+  <text x="742" y="53" class="small">platform / external</text>
 
-    <g transform="translate(16, 56)">
-      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Document Digitization</text>
-      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">100+ Store Leases Ingested</text>
-      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#38bdf8" text-anchor="middle">AI OCR Assistant Wizard</text>
-      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Replaces Fragmented Excel</text>
-    </g>
+  <!-- Users -->
+  <rect x="40" y="104" width="104" height="292" rx="14" class="team"/>
+  <text x="56" y="134" class="h">Users</text>
+  <rect x="50" y="190" width="84" height="34" rx="17" class="chip"/>
+  <text x="92" y="212" text-anchor="middle" class="small">Admin</text>
+  <rect x="50" y="234" width="84" height="34" rx="17" class="chip"/>
+  <text x="92" y="256" text-anchor="middle" class="small">Accounting</text>
+  <rect x="50" y="278" width="84" height="34" rx="17" class="chip"/>
+  <text x="92" y="300" text-anchor="middle" class="small">Site</text>
+  <path d="M146 251 H172" class="arrow"/>
 
-    <g transform="translate(16, 165)">
-      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Contract Attributes</text>
-      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Base Rent • Escalation Rules</text>
-      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#34d399" text-anchor="middle">Deposit, Tax, Landlord Terms</text>
-      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Granular Payment Schedules</text>
-    </g>
+  <!-- Web -->
+  <rect x="182" y="110" width="236" height="292" rx="14" class="shadow"/>
+  <rect x="176" y="104" width="236" height="292" rx="14" class="panel"/>
+  <text x="194" y="134" class="h">Web · Next.js 15</text>
 
-    <g transform="translate(16, 274)">
-      <rect width="228" height="75" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Interactive Demo</text>
-      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Live Public Showcase Portal</text>
-      <text x="114" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#38bdf8" text-anchor="middle">Sanitized HTML/JS Prototype</text>
-    </g>
-  </g>
+  <rect x="190" y="152" width="208" height="48" rx="10" class="mine"/>
+  <text x="294" y="181" text-anchor="middle" class="tile">Addendum workspace</text>
+  <rect x="190" y="212" width="208" height="48" rx="10" class="mine"/>
+  <text x="294" y="241" text-anchor="middle" class="tile">Termination drawer</text>
+  <rect x="190" y="272" width="208" height="48" rx="10" class="mine"/>
+  <text x="294" y="301" text-anchor="middle" class="tile">OCR scan intake<tspan class="small" style="font-weight:400"> (fail-soft)</tspan></text>
+  <rect x="190" y="332" width="208" height="48" rx="10" class="mine"/>
+  <text x="294" y="361" text-anchor="middle" class="tile">Cash-flow console</text>
 
-  <!-- Connectors 1 to 2 -->
-  <path d="M 300 190 L 350 190" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4 4"/>
-  <polygon points="350,190 342,185 342,195" fill="#38bdf8"/>
-  <path d="M 300 310 L 350 310" stroke="#a855f7" stroke-width="2" stroke-dasharray="4 4"/>
-  <polygon points="350,310 342,305 342,315" fill="#a855f7"/>
+  <path d="M422 266 H456" class="arrow" style="marker-start:url(#head)"/>
 
-  <!-- Step 2: Calculation Engine -->
-  <g transform="translate(350, 100)" filter="url(#shadow)">
-    <rect width="260" height="390" rx="12" fill="#111827" stroke="#334155" stroke-width="1.5"/>
-    <rect x="0" y="0" width="260" height="42" rx="12" fill="#1e293b"/>
-    <text x="130" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#a855f7" text-anchor="middle">
-      2. ADDENDUM ENGINE
-    </text>
+  <!-- API -->
+  <rect x="468" y="110" width="458" height="292" rx="14" class="shadow"/>
+  <rect x="462" y="104" width="458" height="292" rx="14" class="panel"/>
+  <text x="480" y="134" class="h">API · NestJS 10</text>
 
-    <g transform="translate(16, 56)">
-      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Dry-Run Financial Sim</text>
-      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Pre-approval Rent Simulation</text>
-      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#38bdf8" text-anchor="middle">Diff Matrix Before &amp; After</text>
-      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Eliminates Cost Surprises</text>
-    </g>
+  <rect x="478" y="152" width="206" height="68" rx="10" class="mine"/>
+  <text x="581" y="181" text-anchor="middle" class="tile">Addendum engine</text>
+  <text x="581" y="200" text-anchor="middle" class="small">+ dry-run</text>
+  <rect x="698" y="152" width="206" height="68" rx="10" class="mine"/>
+  <text x="801" y="191" text-anchor="middle" class="tile">Payment anchor lock</text>
 
-    <g transform="translate(16, 165)">
-      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Period-Locking Invariant</text>
-      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Strict Historical Locking</text>
-      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#f43f5e" text-anchor="middle">Frozen Settled Ledger Cycles</text>
-      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Prevents Unintended Overwrites</text>
-    </g>
+  <rect x="478" y="232" width="206" height="68" rx="10" class="mine"/>
+  <text x="581" y="271" text-anchor="middle" class="tile">Schedules + proration</text>
+  <rect x="698" y="232" width="206" height="68" rx="10" class="mine"/>
+  <text x="801" y="261" text-anchor="middle" class="tile">SAP Journal Entry export</text>
+  <text x="801" y="280" text-anchor="middle" class="small">no duplicates</text>
 
-    <g transform="translate(16, 274)">
-      <rect width="228" height="75" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Addendum Versioning</text>
-      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Full Audit Trail &amp; Sign-off</text>
-      <text x="114" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#a855f7" text-anchor="middle">Draft → Review → Approved</text>
-    </g>
-  </g>
+  <rect x="478" y="312" width="206" height="68" rx="10" class="mine"/>
+  <text x="581" y="341" text-anchor="middle" class="tile">Master data import</text>
+  <text x="581" y="360" text-anchor="middle" class="small">diff preview</text>
+  <rect x="698" y="312" width="206" height="68" rx="10" class="mine"/>
+  <text x="801" y="351" text-anchor="middle" class="tile">Audit log &amp; expiry alerts</text>
 
-  <!-- Connectors 2 to 3 -->
-  <path d="M 610 190 L 660 190" stroke="#34d399" stroke-width="2" stroke-dasharray="4 4"/>
-  <polygon points="660,190 652,185 652,195" fill="#34d399"/>
-  <path d="M 610 320 L 660 320" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 4"/>
-  <polygon points="660,320 652,315 652,325" fill="#fbbf24"/>
+  <!-- Links to platform / external -->
+  <path d="M294 404 V438" class="arrow"/>
+  <path d="M537 404 V438" class="arrow"/>
+  <text x="549" y="425" class="sub" style="font-size:11px">JE file · manual import</text>
+  <path d="M718 404 V438" class="arrow"/>
+  <path d="M872 404 V438" class="arrow"/>
 
-  <!-- Step 3: Accounting & Integration -->
-  <g transform="translate(660, 100)" filter="url(#shadow)">
-    <rect width="260" height="390" rx="12" fill="#111827" stroke="#334155" stroke-width="1.5"/>
-    <rect x="0" y="0" width="260" height="42" rx="12" fill="#1e293b"/>
-    <text x="130" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#34d399" text-anchor="middle">
-      3. FINANCE &amp; SAP INTEGRATION
-    </text>
-
-    <g transform="translate(16, 56)">
-      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Payment Journal Builder</text>
-      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Monthly Rent &amp; Utility Ledger</text>
-      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#34d399" text-anchor="middle">Automated Voucher Codes</text>
-      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Tax Withholding Adjustments</text>
-    </g>
-
-    <g transform="translate(16, 165)">
-      <rect width="228" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">SAP Business One Staging</text>
-      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">AP Invoice Import Engine</text>
-      <text x="114" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#fbbf24" text-anchor="middle">Clean Schema-Validated Feeds</text>
-      <text x="114" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">100% Data Integrity Guaranteed</text>
-    </g>
-
-    <g transform="translate(16, 274)">
-      <rect width="228" height="75" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="114" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">Corporate Documentation</text>
-      <text x="114" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Interactive User Guide Portal</text>
-      <text x="114" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#38bdf8" text-anchor="middle">Workflow &amp; Policy Training</text>
-    </g>
-  </g>
-
-  <rect x="40" y="505" width="880" height="20" rx="4" fill="#0f172a"/>
-  <text x="480" y="519" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">
-    CONFIDENTIAL SYSTEM BLUEPRINT • SANITIZED FOR ENGINEERING PORTFOLIO SHOWCASE
-  </text>
+  <!-- Platform / external -->
+  <rect x="176" y="444" width="236" height="48" rx="10" class="team"/>
+  <text x="294" y="473" text-anchor="middle" class="small">OCR service (external)</text>
+  <rect x="462" y="444" width="150" height="48" rx="10" class="team"/>
+  <text x="537" y="473" text-anchor="middle" class="small">SAP Business One</text>
+  <rect x="628" y="444" width="180" height="48" rx="10" class="team"/>
+  <text x="718" y="473" text-anchor="middle" class="small">PostgreSQL 16 · Prisma 7</text>
+  <rect x="824" y="444" width="96" height="48" rx="10" class="team"/>
+  <text x="872" y="473" text-anchor="middle" class="small">MinIO (PDF)</text>
 </svg>

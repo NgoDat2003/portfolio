@@ -1,5 +1,5 @@
 ﻿import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, Github, Globe, PlayCircle } from 'lucide-react';
+import { ArrowLeft, Github, Globe, Maximize2, PlayCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import StatusBadge from '../components/ui/StatusBadge';
@@ -42,7 +42,7 @@ export default function ProjectDetail() {
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <span className="text-xs font-semibold uppercase tracking-[0.12em] text-ink-soft">{kind}</span>
-            <StatusBadge status={getProjectStatus(project.timeline)} />
+            <StatusBadge status={getProjectStatus(project)} />
           </div>
           <h1 className="mt-3 text-4xl font-extrabold leading-[1.1] tracking-tight text-ink md:text-6xl">
             {project.title}
@@ -83,7 +83,7 @@ export default function ProjectDetail() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          className="mb-6 aspect-video overflow-hidden rounded-2xl border-2 border-ink bg-ink shadow-sketch"
+          className={`mb-3 aspect-video overflow-hidden rounded-2xl border-2 border-ink shadow-sketch ${project.video ? 'bg-ink' : 'bg-card'}`}
         >
           {project.video ? (
             <video
@@ -96,16 +96,29 @@ export default function ProjectDetail() {
               preload="metadata"
             />
           ) : (
-            <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
+            // Mouse users can click the image; the text link below is the single keyboard stop.
+            <a href={project.image} target="_blank" rel="noopener noreferrer" tabIndex={-1} className="block h-full w-full">
+              <img src={project.image} alt={`Sơ đồ / ảnh minh họa ${project.title}`} className="h-full w-full object-contain" />
+            </a>
           )}
         </motion.div>
 
-        {project.video && (
-          <div className="mb-12 rounded-2xl border-2 border-ink bg-pastel-butter p-5 text-sm leading-relaxed text-ink-soft">
+        {!project.video && (
+          <a
+            href={project.image}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Mở ảnh đầy đủ: ${project.title}`}
+            className="link-wavy mb-6 flex w-fit items-center gap-1.5 text-sm"
+          >
+            Mở ảnh đầy đủ <Maximize2 size={14} aria-hidden="true" />
+          </a>
+        )}
+
+        {project.video && project.video_note && (
+          <div className="mb-12 mt-3 rounded-2xl border-2 border-ink bg-pastel-butter p-5 text-sm leading-relaxed text-ink-soft">
             <p className="mb-1 font-hand text-xl text-ink">Automated E2E happy-flow</p>
-            <p>
-              Video này được sinh từ Playwright E2E test, không phải quay tay. Flow mô phỏng người dùng thật đi qua các vai trò QAM, QC và SM: tạo audit plan, QC thực hiện checklist và upload evidence, SM xử lý Action Plan, sau đó QAM kiểm tra và đóng AP.
-            </p>
+            <p>{project.video_note}</p>
           </div>
         )}
 

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%" role="img" aria-labelledby="t d">
+  <title id="t">TTVH Portal cover</title>
+  <desc id="d">Project card cover for TTVH Portal, an internal portal with Entra ID single sign-on and the SAP Master Board. Highlighted tiles are my work: Entra ID SSO, token rotation, SAP monitors and the 25-query studio. Dashed tiles would mark team work; there are none on this card.</desc>
+  <style>
+    text { font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif; fill: #2A231F; font-size: 40px; }
+    .title { font-size: 68px; font-weight: 800; }
+    .sub { fill: #736860; }
+    .tile { font-weight: 600; }
+    .mine { fill: #F8EBB5; stroke: #D9654B; stroke-width: 2.5; }
+    .team { fill: none; stroke: #736860; stroke-width: 1.5; stroke-dasharray: 6 5; }
+    .panel { fill: #FFFCF7; stroke: #2A231F; stroke-width: 2; }
+    .shadow { fill: #2A231F; }
+  </style>
+
+  <rect width="960" height="540" fill="#FAF4EA"/>
+
+  <rect x="34" y="32" width="898" height="480" rx="20" class="shadow"/>
+  <rect x="28" y="26" width="898" height="480" rx="20" class="panel"/>
+
+  <text x="64" y="110" class="title">TTVH Portal</text>
+  <text x="64" y="166" class="sub">SSO · SAP Master Board</text>
+
+  <rect x="50" y="196" width="420" height="136" rx="16" class="mine"/>
+  <text x="260" y="278" text-anchor="middle" class="tile">Entra ID SSO</text>
+  <rect x="486" y="196" width="420" height="136" rx="16" class="mine"/>
+  <text x="696" y="278" text-anchor="middle" class="tile">Token rotation</text>
+  <rect x="50" y="348" width="420" height="136" rx="16" class="mine"/>
+  <text x="260" y="430" text-anchor="middle" class="tile">SAP monitors</text>
+  <rect x="486" y="348" width="420" height="136" rx="16" class="mine"/>
+  <text x="696" y="430" text-anchor="middle" class="tile">25-query studio</text>
+</svg>

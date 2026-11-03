@@ -3,10 +3,11 @@ import { PROJECT_STATUS_LABEL, type ProjectStatus } from '../../lib/project-disp
 
 const STATUS_STYLES: Record<ProjectStatus, { pill: string; dot: string }> = {
   'in-progress': { pill: 'bg-pastel-butter', dot: 'bg-accent' },
+  production: { pill: 'bg-pastel-sky', dot: 'bg-[#2F6690]' },
   completed: { pill: 'bg-pastel-sage', dot: 'bg-[#5F8F4E]' },
 }
 
-/** Pastel pill showing whether a project is still active or finished. */
+/** Pastel pill showing whether a project is in progress, in live use, or finished. */
 export default function StatusBadge({ status }: { status: ProjectStatus }) {
   const styles = STATUS_STYLES[status]
   return (

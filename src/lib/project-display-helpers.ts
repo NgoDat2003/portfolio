@@ -1,16 +1,17 @@
-// Presentation helpers that derive display values from existing Project fields,
-// so the data file does not need extra fields for badges and labels.
+// Presentation helpers that derive display values from Project fields.
 
-export type ProjectStatus = 'in-progress' | 'completed';
+export type ProjectStatus = 'in-progress' | 'production' | 'completed';
 
 export const PROJECT_STATUS_LABEL: Record<ProjectStatus, string> = {
   'in-progress': 'Đang phát triển',
+  production: 'Đang vận hành',
   completed: 'Hoàn thành',
 };
 
-/** A timeline ending in "Present" / "Hiện tại" means the project is still active. */
-export function getProjectStatus(timeline: string): ProjectStatus {
-  return /present|hiện tại/i.test(timeline) ? 'in-progress' : 'completed';
+/** An explicit `status` wins; otherwise a timeline ending in "Present" / "Hiện tại" means still in progress. */
+export function getProjectStatus(project: { timeline: string; status?: ProjectStatus }): ProjectStatus {
+  if (project.status) return project.status;
+  return /present|hiện tại/i.test(project.timeline) ? 'in-progress' : 'completed';
 }
 
 /** "Full-stack Platform / Quality Assurance" -> { kind: "Full-stack Platform", domain: "Quality Assurance" } */

@@ -31,16 +31,16 @@ export default function Hero() {
               <h1 className="mt-3 font-extrabold tracking-tight text-ink">
                 <span className="marker-highlight text-4xl leading-[1.15] sm:text-5xl lg:text-[3.4rem]">Fullstack Web Developer</span>
                 <span className="mt-3 block text-2xl leading-snug text-ink-soft sm:text-3xl lg:text-[2.1rem]">
-                  xây hệ thống vận hành cho chuỗi 200+ cửa hàng
+                  làm hệ thống nội bộ cho tập đoàn F&B 200+ cửa hàng
                 </span>
               </h1>
               <p className="mt-5 text-base font-medium text-muted md:text-lg">
-                Next.js 15 · NestJS 10 · TypeScript · PostgreSQL
+                React · Next.js · NestJS · TypeScript · PostgreSQL
               </p>
             </motion.div>
-  
+
             <motion.p {...fadeUp(0.1)} className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
-              Kỹ sư Fullstack Web với kinh nghiệm thực chiến phát triển Web Portal doanh nghiệp, Nền tảng quản lý hợp đồng thuê và số hóa quy trình chuỗi F&B 200+ cửa hàng. Chuyên sâu Turborepo, Next.js 15, NestJS, Azure AD SSO và tự động hóa n8n.
+              Hiện tôi làm portal nội bộ đăng nhập bằng tài khoản Microsoft kèm Master Board theo dõi chứng từ SAP, và hệ thống quản lý hợp đồng thuê mặt bằng. Năm 2026 tôi cũng làm website Thức Coffee và đóng góp vào app audit QA/QC. Trước đó, tại TADALABS, tôi là thành viên chính module Inno POS và đóng góp giao diện hộp thư OmniChat trên ERPNext.
             </motion.p>
   
             <motion.div {...fadeUp(0.2)} className="mt-8 flex flex-wrap gap-3">
@@ -58,7 +58,7 @@ export default function Hero() {
               imageSrc="/assets/cv.png"
               alt={`Ảnh chân dung ${profileContactInfo.fullName}`}
               caption={profileContactInfo.fullName}
-              note="Contract-first API & Azure AD SSO"
+              note="Portal · hợp đồng · POS"
             />
           </div>
         </div>
